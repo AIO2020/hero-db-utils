@@ -1,0 +1,3 @@
+# Optional requirements:
+sqlalchemy==1.4.0
+python-dotenv

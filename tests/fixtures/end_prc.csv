@@ -1,0 +1,1001 @@
+datetime,patient_id,procedure_id,procedure_label,place,human_resource,human_resource_id
+01/01/2020 00:13,0,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 00:40,0,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 00:41,2,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 00:49,1,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 00:49,2,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 00:56,4,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 00:57,3,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 01:08,5,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 01:12,4,AIO002,Nurse clinical evaluation,Gynecology Room,Nurse,0
+01/01/2020 01:14,6,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 01:17,4,MAM007,Electrocardiogram (ECG),Gynecology Room,ER Doctor Senior,0
+01/01/2020 01:22,1,IMG006,Computerized tomography (CT) with contrast,TC Room,Radiologist Doctor,0
+01/01/2020 01:22,7,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 01:25,3,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 01:26,7,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 01:33,4,IMG008,Ultrasonography,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 01:43,5,OTR004,Isolation procedures,Clinic Room,Nurse,0
+01/01/2020 01:44,1,IMG006,Computerized tomography (CT) with contrast,TC Room,Radiologist Doctor,0
+01/01/2020 01:51,8,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 01:52,6,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 01:57,4,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 02:02,4,IMG008,Ultrasonography,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 02:08,1,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 02:09,10,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 02:10,11,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 02:12,5,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 02:17,9,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 02:17,5,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,0
+01/01/2020 02:18,8,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 02:18,4,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 02:20,5,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 02:23,12,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 02:28,8,OTR004,Isolation procedures,Clinic Room,Nurse,0
+01/01/2020 02:40,4,OTR004,Isolation procedures,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 02:44,10,OTR004,Isolation procedures,Triage Room,Nurse,1
+01/01/2020 02:45,4,AIO006,Death,Death,None,None
+01/01/2020 02:47,8,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,0
+01/01/2020 02:48,8,OTR004,Isolation procedures,Clinic Room,ER Doctor Senior,0
+01/01/2020 02:53,8,SKB010,"Skin and breast procedures, NEC",Clinic Room,ER Doctor Junior,1
+01/01/2020 02:54,8,ADM010,Vaccinations,Clinic Room,Nurse,0
+01/01/2020 02:57,10,MAM007,Electrocardiogram (ECG),Triage Room,ER Doctor Junior,0
+01/01/2020 02:59,9,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 03:02,14,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 03:04,5,AIO002,Nurse clinical evaluation,Triage Room,Nurse,2
+01/01/2020 03:04,13,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 03:04,14,AIO001,Medical clinical evaluation,Surgery,ER Doctor Senior,0
+01/01/2020 03:06,14,OTR004,Isolation procedures,Surgery,ER Doctor Senior,0
+01/01/2020 03:07,12,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 03:12,10,OTR004,Isolation procedures,Triage Room,Nurse,0
+01/01/2020 03:13,10,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 03:15,11,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 03:21,14,CNS002,Lumbar puncture,Surgery,ER Doctor Senior,0
+01/01/2020 03:26,15,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 03:27,13,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 03:27,11,SKB010,"Skin and breast procedures, NEC",Gynecology Room,ER Doctor Senior,1
+01/01/2020 03:31,16,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 03:35,5,OTR004,Isolation procedures,Clinic Room,Nurse,1
+01/01/2020 03:36,17,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 03:38,8,AIO006,Death,Death,None,None
+01/01/2020 03:40,5,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 03:43,14,ADM021,"Administration of therapeutic substances, NEC",Surgery,Nurse,0
+01/01/2020 03:43,18,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 03:48,10,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 03:53,17,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 03:54,15,OTR004,Isolation procedures,Mid Stay Box,ER Doctor Junior,0
+01/01/2020 03:57,14,CNS002,Lumbar puncture,Surgery,ER Doctor Senior,1
+01/01/2020 03:59,19,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 04:01,11,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 04:05,5,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 04:09,17,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,0
+01/01/2020 04:20,14,MST028,"Subcutaneous tissue and fascia procedures, NEC",Surgery,ER Doctor Senior,0
+01/01/2020 04:25,19,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 04:30,18,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 04:31,14,ADM019,Potential COVID-19 therapies,Surgery,ER Doctor Junior,0
+01/01/2020 04:40,15,AIO001,Medical clinical evaluation,Polytrauma Box,ER Doctor Senior,0
+01/01/2020 04:40,20,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 04:41,14,ADM019,Potential COVID-19 therapies,Surgery,ER Doctor Senior,0
+01/01/2020 04:47,19,MAM007,Electrocardiogram (ECG),Clinic Room,ER Doctor Senior,0
+01/01/2020 04:52,22,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 04:53,21,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 04:54,17,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 04:56,24,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 05:01,23,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 05:03,15,CNS002,Lumbar puncture,Polytrauma Box,ER Doctor Junior,0
+01/01/2020 05:07,17,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 05:10,14,MAM007,Electrocardiogram (ECG),Surgery,Nurse,0
+01/01/2020 05:13,19,ADM010,Vaccinations,Clinic Room,Nurse,1
+01/01/2020 05:16,17,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,2
+01/01/2020 05:23,19,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,0
+01/01/2020 05:28,15,IMG008,Ultrasonography,Polytrauma Box,Radiologist Doctor,0
+01/01/2020 05:28,14,OTR004,Isolation procedures,Surgery,ER Doctor Senior,0
+01/01/2020 05:31,22,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 05:32,17,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 05:33,23,AIO002,Nurse clinical evaluation,Triage Room,Nurse,2
+01/01/2020 05:35,19,ADM010,Vaccinations,Clinic Room,Nurse,0
+01/01/2020 05:40,21,AIO002,Nurse clinical evaluation,Mid Stay Box,Nurse,1
+01/01/2020 05:42,15,AIO006,Death,Death,None,None
+01/01/2020 05:47,14,ESA006,Cardioversion,Surgery,ER Doctor Junior,0
+01/01/2020 05:49,19,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 05:56,25,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 06:01,26,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 06:02,19,AIO006,Death,Death,None,None
+01/01/2020 06:04,23,OTR004,Isolation procedures,Clinic Room,ER Doctor Senior,1
+01/01/2020 06:06,14,OTR004,Isolation procedures,Surgery,ER Doctor Senior,0
+01/01/2020 06:10,17,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 06:11,14,SKB010,"Skin and breast procedures, NEC",Surgery,ER Doctor Junior,0
+01/01/2020 06:17,14,AIO001,Medical clinical evaluation,Surgery,ER Doctor Junior,0
+01/01/2020 06:18,14,ADM010,Vaccinations,Surgery,Nurse,0
+01/01/2020 06:29,23,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 06:30,25,OTR004,Isolation procedures,Clinic Room,ER Doctor Senior,1
+01/01/2020 06:34,21,OTR004,Isolation procedures,Mid Stay Box,ER Doctor Senior,0
+01/01/2020 06:34,17,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 06:37,14,ADM020,"Administration of diagnostic substances, NEC",Surgery,Nurse,0
+01/01/2020 06:42,27,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 06:43,21,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Senior,0
+01/01/2020 06:44,21,ADM021,"Administration of therapeutic substances, NEC",Mid Stay Box,Nurse,0
+01/01/2020 06:45,23,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,1
+01/01/2020 06:48,14,OTR004,Isolation procedures,Surgery,ER Doctor Senior,0
+01/01/2020 06:49,26,OTR004,Isolation procedures,Clinic Room,Nurse,2
+01/01/2020 06:51,14,ADM010,Vaccinations,Surgery,Nurse,0
+01/01/2020 06:56,23,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 06:58,25,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 07:00,14,ADM020,"Administration of diagnostic substances, NEC",Surgery,Nurse,0
+01/01/2020 07:01,23,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 07:02,26,MAM007,Electrocardiogram (ECG),Clinic Room,ER Doctor Senior,0
+01/01/2020 07:05,28,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 07:07,21,ADM019,Potential COVID-19 therapies,Mid Stay Box,ER Doctor Junior,0
+01/01/2020 07:09,27,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 07:10,25,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,1
+01/01/2020 07:10,16,AIO002,Nurse clinical evaluation,Surgery,Nurse,0
+01/01/2020 07:11,26,ADM010,Vaccinations,Clinic Room,Nurse,2
+01/01/2020 07:11,25,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 07:12,14,AIO008,Left without being seen,Discharge and LWBS,None,None
+01/01/2020 07:15,29,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 07:17,30,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 07:23,23,OTR004,Isolation procedures,Clinic Room,Nurse,0
+01/01/2020 07:28,31,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 07:29,16,CNS002,Lumbar puncture,Surgery,ER Doctor Junior,0
+01/01/2020 07:30,21,ADM020,"Administration of diagnostic substances, NEC",Mid Stay Box,Nurse,3
+01/01/2020 07:33,25,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 07:36,29,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 07:38,23,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 07:38,33,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 07:38,20,AIO001,Medical clinical evaluation,Surgery,ER Doctor Junior,0
+01/01/2020 07:42,26,AIO006,Death,Death,None,None
+01/01/2020 07:43,32,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 07:54,31,IMG009,Plain radiography,Rx Room,Radiologist Doctor,0
+01/01/2020 07:55,21,OTR004,Isolation procedures,Mid Stay Box,ER Doctor Junior,2
+01/01/2020 07:56,34,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 07:58,20,ADM014,Regional anesthesia,Surgery,ER Doctor Senior,0
+01/01/2020 08:01,35,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 08:08,16,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 08:13,31,OTR004,Isolation procedures,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 08:17,37,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 08:19,21,ADM010,Vaccinations,Mid Stay Box,Nurse,2
+01/01/2020 08:19,20,OTR004,Isolation procedures,Surgery,Nurse,3
+01/01/2020 08:21,36,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 08:21,23,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 08:21,35,AIO008,Left without being seen,Discharge and LWBS,None,None
+01/01/2020 08:22,30,AIO002,Nurse clinical evaluation,Triage Room,Nurse,1
+01/01/2020 08:23,38,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 08:23,30,MAM007,Electrocardiogram (ECG),Triage Room,Nurse,1
+01/01/2020 08:24,40,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 08:25,41,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 08:30,16,ADM010,Vaccinations,Triage Room,Nurse,0
+01/01/2020 08:31,30,ADM010,Vaccinations,Triage Room,Nurse,1
+01/01/2020 08:33,23,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,4
+01/01/2020 08:38,21,ADM020,"Administration of diagnostic substances, NEC",Mid Stay Box,Nurse,3
+01/01/2020 08:39,36,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Junior,0
+01/01/2020 08:42,39,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 08:43,34,OTR004,Isolation procedures,Triage Room,Nurse,1
+01/01/2020 08:45,31,ADM014,Regional anesthesia,Gynecology Room,ER Doctor Junior,1
+01/01/2020 08:45,25,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 08:45,30,AIO006,Death,Death,None,None
+01/01/2020 08:46,41,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 08:47,21,MAM007,Electrocardiogram (ECG),Mid Stay Box,ER Doctor Senior,0
+01/01/2020 08:50,16,AIO006,Death,Death,None,None
+01/01/2020 08:50,31,MAM007,Electrocardiogram (ECG),Gynecology Room,Nurse,0
+01/01/2020 08:52,42,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 08:53,36,GIS006,Paracentesis,Mid Stay Box,ER Doctor Junior,0
+01/01/2020 08:54,23,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 08:56,37,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 08:59,20,MAM007,Electrocardiogram (ECG),Surgery,Nurse,2
+01/01/2020 09:01,40,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 09:01,34,MAM007,Electrocardiogram (ECG),Triage Room,ER Doctor Junior,3
+01/01/2020 09:02,42,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,3
+01/01/2020 09:04,25,OTR004,Isolation procedures,Clinic Room,Nurse,2
+01/01/2020 09:05,25,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,3
+01/01/2020 09:06,44,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 09:06,23,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 09:07,43,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 09:07,42,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,1
+01/01/2020 09:10,38,OTR004,Isolation procedures,Clinic Room,ER Doctor Junior,2
+01/01/2020 09:12,31,ADM020,"Administration of diagnostic substances, NEC",Gynecology Room,Nurse,0
+01/01/2020 09:13,41,MAM007,Electrocardiogram (ECG),Clinic Room,ER Doctor Junior,1
+01/01/2020 09:15,34,OTR004,Isolation procedures,Triage Room,ER Doctor Senior,1
+01/01/2020 09:21,42,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,1
+01/01/2020 09:21,34,MAM007,Electrocardiogram (ECG),Triage Room,Nurse,2
+01/01/2020 09:23,23,OTR004,Isolation procedures,Clinic Room,ER Doctor Junior,4
+01/01/2020 09:26,31,ADM014,Regional anesthesia,Gynecology Room,ER Doctor Junior,3
+01/01/2020 09:27,20,ADM014,Regional anesthesia,Surgery,ER Doctor Junior,0
+01/01/2020 09:27,38,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,2
+01/01/2020 09:30,46,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 09:30,39,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 09:35,45,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 09:39,31,SKB010,"Skin and breast procedures, NEC",Gynecology Room,ER Doctor Junior,3
+01/01/2020 09:41,25,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 09:44,34,MAM007,Electrocardiogram (ECG),Triage Room,ER Doctor Junior,1
+01/01/2020 09:45,42,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 09:45,39,OTR004,Isolation procedures,Triage Room,ER Doctor Junior,0
+01/01/2020 09:45,31,ADM020,"Administration of diagnostic substances, NEC",Gynecology Room,Nurse,0
+01/01/2020 09:46,20,MST028,"Subcutaneous tissue and fascia procedures, NEC",Surgery,ER Doctor Senior,1
+01/01/2020 09:47,20,AIO001,Medical clinical evaluation,Surgery,ER Doctor Senior,0
+01/01/2020 09:51,48,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 09:51,41,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,2
+01/01/2020 09:51,20,AIO006,Death,Death,None,None
+01/01/2020 09:52,47,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 09:56,42,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,2
+01/01/2020 09:57,43,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 09:58,23,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,4
+01/01/2020 09:59,49,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 10:01,39,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 10:01,42,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,2
+01/01/2020 10:02,39,MAM007,Electrocardiogram (ECG),Triage Room,ER Doctor Senior,0
+01/01/2020 10:04,31,CNS002,Lumbar puncture,Gynecology Room,ER Doctor Junior,0
+01/01/2020 10:06,34,MAM007,Electrocardiogram (ECG),Triage Room,Nurse,1
+01/01/2020 10:08,43,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,2
+01/01/2020 10:14,50,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 10:15,24,AIO001,Medical clinical evaluation,Surgery,ER Doctor Junior,3
+01/01/2020 10:15,51,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 10:15,49,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 10:21,52,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 10:22,47,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 10:22,38,OTR004,Isolation procedures,Triage Room,Nurse,3
+01/01/2020 10:22,31,OTR004,Isolation procedures,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 10:22,45,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 10:22,43,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 10:23,38,AIO002,Nurse clinical evaluation,Triage Room,Nurse,3
+01/01/2020 10:24,32,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 10:28,48,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 10:32,23,AIO008,Left without being seen,Discharge and LWBS,None,None
+01/01/2020 10:33,42,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,0
+01/01/2020 10:37,39,AIO006,Death,Death,None,None
+01/01/2020 10:39,51,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,2
+01/01/2020 10:43,48,MAM007,Electrocardiogram (ECG),Clinic Room,ER Doctor Junior,0
+01/01/2020 10:45,45,ADM010,Vaccinations,Clinic Room,Nurse,4
+01/01/2020 10:47,24,OTR004,Isolation procedures,Surgery,Nurse,1
+01/01/2020 10:49,38,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 10:50,54,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 10:54,53,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 10:56,48,ADM010,Vaccinations,Clinic Room,Nurse,5
+01/01/2020 10:58,55,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 10:59,34,AIO002,Nurse clinical evaluation,Triage Room,Nurse,2
+01/01/2020 11:02,42,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,0
+01/01/2020 11:04,51,MAM007,Electrocardiogram (ECG),Clinic Room,ER Doctor Senior,1
+01/01/2020 11:04,45,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,4
+01/01/2020 11:05,31,IMG009,Plain radiography,Rx Room,Radiologist Doctor,0
+01/01/2020 11:06,32,OTR004,Isolation procedures,Gynecology Room,Nurse,3
+01/01/2020 11:06,24,ESA006,Cardioversion,Surgery,ER Doctor Junior,0
+01/01/2020 11:06,38,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,1
+01/01/2020 11:06,51,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,2
+01/01/2020 11:08,56,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 11:13,34,ADM010,Vaccinations,Triage Room,Nurse,2
+01/01/2020 11:14,38,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,2
+01/01/2020 11:18,42,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 11:20,48,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,5
+01/01/2020 11:20,57,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 11:21,50,OTR004,Isolation procedures,Clinic Room,Nurse,0
+01/01/2020 11:21,58,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 11:26,45,AIO006,Death,Death,None,None
+01/01/2020 11:26,24,ADM019,Potential COVID-19 therapies,Surgery,ER Doctor Junior,0
+01/01/2020 11:30,57,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 11:34,53,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 11:34,60,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 11:35,32,AIO002,Nurse clinical evaluation,Gynecology Room,Nurse,1
+01/01/2020 11:35,48,MAM007,Electrocardiogram (ECG),Clinic Room,ER Doctor Junior,1
+01/01/2020 11:36,59,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 11:38,51,SKB010,"Skin and breast procedures, NEC",Clinic Room,ER Doctor Junior,3
+01/01/2020 11:39,60,AIO002,Nurse clinical evaluation,Polytrauma Box,Nurse,0
+01/01/2020 11:39,62,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 11:42,50,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 11:45,56,AIO002,Nurse clinical evaluation,Polytrauma Box,Nurse,0
+01/01/2020 11:46,51,AIO006,Death,Death,None,None
+01/01/2020 11:48,24,OTR004,Isolation procedures,Surgery,ER Doctor Senior,1
+01/01/2020 11:49,38,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,2
+01/01/2020 11:49,31,OTR004,Isolation procedures,Clinic Room,ER Doctor Junior,0
+01/01/2020 11:50,31,MAM007,Electrocardiogram (ECG),Clinic Room,Nurse,0
+01/01/2020 11:54,61,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 11:55,64,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 11:56,58,AIO001,Medical clinical evaluation,ER Box,ER Doctor Junior,2
+01/01/2020 11:58,63,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 11:59,32,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 12:00,42,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 12:03,31,AIO006,Death,Death,None,None
+01/01/2020 12:11,48,SKB010,"Skin and breast procedures, NEC",Clinic Room,ER Doctor Junior,1
+01/01/2020 12:11,34,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 12:12,60,IMG008,Ultrasonography,Polytrauma Box,Radiologist Doctor,0
+01/01/2020 12:13,56,ESA006,Cardioversion,Polytrauma Box,ER Doctor Junior,3
+01/01/2020 12:13,24,AIO001,Medical clinical evaluation,Surgery,ER Doctor Junior,4
+01/01/2020 12:14,38,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 12:14,66,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 12:17,62,AIO002,Nurse clinical evaluation,Triage Room,Nurse,1
+01/01/2020 12:20,62,MAM007,Electrocardiogram (ECG),Triage Room,ER Doctor Junior,0
+01/01/2020 12:23,32,MAM007,Electrocardiogram (ECG),Gynecology Room,Nurse,2
+01/01/2020 12:23,48,OTR004,Isolation procedures,Clinic Room,ER Doctor Senior,0
+01/01/2020 12:23,28,OTR004,Isolation procedures,Surgery,ER Doctor Senior,1
+01/01/2020 12:24,67,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 12:24,32,ADM020,"Administration of diagnostic substances, NEC",Gynecology Room,Nurse,2
+01/01/2020 12:27,65,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 12:29,50,IMG009,Plain radiography,Rx Room,Radiologist Doctor,0
+01/01/2020 12:30,63,AIO002,Nurse clinical evaluation,Polytrauma Box,Nurse,0
+01/01/2020 12:30,69,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 12:33,42,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 12:34,68,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 12:38,28,SKB010,"Skin and breast procedures, NEC",Surgery,ER Doctor Senior,0
+01/01/2020 12:38,64,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 12:39,60,AIO006,Death,Death,None,None
+01/01/2020 12:40,56,IMG008,Ultrasonography,Polytrauma Box,Radiologist Doctor,0
+01/01/2020 12:41,24,AIO006,Death,Death,None,None
+01/01/2020 12:43,32,ADM014,Regional anesthesia,Gynecology Room,ER Doctor Senior,0
+01/01/2020 12:44,48,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,3
+01/01/2020 12:46,42,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,0
+01/01/2020 12:48,70,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 12:50,38,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 12:50,56,AIO006,Death,Death,None,None
+01/01/2020 12:51,62,OTR004,Isolation procedures,Triage Room,Nurse,1
+01/01/2020 12:51,67,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 12:52,71,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 12:56,58,SKB010,"Skin and breast procedures, NEC",ER Box,ER Doctor Senior,0
+01/01/2020 12:58,72,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 12:59,28,CNS002,Lumbar puncture,Surgery,ER Doctor Junior,0
+01/01/2020 12:59,68,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 13:00,70,OTR004,Isolation procedures,Triage Room,Nurse,1
+01/01/2020 13:01,73,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 13:02,32,AIO002,Nurse clinical evaluation,Gynecology Room,Nurse,2
+01/01/2020 13:02,50,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 13:02,42,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,2
+01/01/2020 13:03,32,AIO006,Death,Death,None,None
+01/01/2020 13:04,48,OTR004,Isolation procedures,Clinic Room,Nurse,3
+01/01/2020 13:05,38,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 13:05,42,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,2
+01/01/2020 13:08,28,AIO002,Nurse clinical evaluation,Surgery,Nurse,0
+01/01/2020 13:08,71,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 13:10,63,ADM019,Potential COVID-19 therapies,Polytrauma Box,ER Doctor Senior,1
+01/01/2020 13:11,65,AIO001,Medical clinical evaluation,ER Box,ER Doctor Junior,3
+01/01/2020 13:12,48,MAM007,Electrocardiogram (ECG),Clinic Room,ER Doctor Junior,0
+01/01/2020 13:12,50,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 13:12,65,MAM007,Electrocardiogram (ECG),ER Box,ER Doctor Junior,2
+01/01/2020 13:18,33,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 13:19,65,ADM020,"Administration of diagnostic substances, NEC",ER Box,Nurse,4
+01/01/2020 13:20,75,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 13:21,38,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,2
+01/01/2020 13:23,74,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 13:24,28,GIS006,Paracentesis,Surgery,ER Doctor Senior,1
+01/01/2020 13:24,77,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 13:26,48,OTR004,Isolation procedures,Clinic Room,ER Doctor Senior,0
+01/01/2020 13:27,70,AIO002,Nurse clinical evaluation,Triage Room,Nurse,1
+01/01/2020 13:28,38,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 13:32,48,MAM007,Electrocardiogram (ECG),Clinic Room,Nurse,2
+01/01/2020 13:34,42,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,3
+01/01/2020 13:35,76,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 13:36,63,ESA006,Cardioversion,Polytrauma Box,ER Doctor Junior,1
+01/01/2020 13:36,65,OTR004,Isolation procedures,ER Box,Nurse,4
+01/01/2020 13:38,50,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,0
+01/01/2020 13:39,58,GIS006,Paracentesis,ER Box,ER Doctor Senior,1
+01/01/2020 13:39,78,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 13:40,38,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 13:46,42,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,4
+01/01/2020 13:46,65,AIO006,Death,Death,None,None
+01/01/2020 13:47,62,MAM007,Electrocardiogram (ECG),Triage Room,ER Doctor Senior,0
+01/01/2020 13:50,28,ESA006,Cardioversion,Surgery,ER Doctor Junior,2
+01/01/2020 13:51,74,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Junior,0
+01/01/2020 13:51,28,AIO001,Medical clinical evaluation,Surgery,ER Doctor Junior,1
+01/01/2020 13:52,48,OTR004,Isolation procedures,Clinic Room,ER Doctor Junior,3
+01/01/2020 13:52,50,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 13:52,74,ADM020,"Administration of diagnostic substances, NEC",Mid Stay Box,Nurse,0
+01/01/2020 13:55,80,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 13:56,72,OTR004,Isolation procedures,Triage Room,Nurse,1
+01/01/2020 13:56,42,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 13:58,76,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 14:00,33,MAM007,Electrocardiogram (ECG),Gynecology Room,Nurse,5
+01/01/2020 14:01,79,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 14:01,38,AIO008,Left without being seen,Discharge and LWBS,None,None
+01/01/2020 14:04,48,IMG008,Ultrasonography,Clinic Room,Radiologist Doctor,0
+01/01/2020 14:06,63,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 14:07,74,GIS006,Paracentesis,Mid Stay Box,ER Doctor Junior,1
+01/01/2020 14:08,70,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 14:09,42,AIO008,Left without being seen,Discharge and LWBS,None,None
+01/01/2020 14:10,80,OTR004,Isolation procedures,ER Box,ER Doctor Senior,0
+01/01/2020 14:12,28,OTR004,Isolation procedures,Surgery,ER Doctor Junior,0
+01/01/2020 14:16,62,AIO006,Death,Death,None,None
+01/01/2020 14:16,50,OTR004,Isolation procedures,Clinic Room,ER Doctor Junior,2
+01/01/2020 14:18,82,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 14:20,58,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 14:21,72,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 14:21,80,MST028,"Subcutaneous tissue and fascia procedures, NEC",ER Box,ER Doctor Senior,0
+01/01/2020 14:22,33,MAM007,Electrocardiogram (ECG),Gynecology Room,ER Doctor Junior,3
+01/01/2020 14:22,74,ADM010,Vaccinations,Mid Stay Box,Nurse,1
+01/01/2020 14:25,78,IMG007,Computerized tomography (CT) without contrast,TC Room,Radiologist Doctor,0
+01/01/2020 14:27,81,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 14:28,74,ADM020,"Administration of diagnostic substances, NEC",Mid Stay Box,Nurse,0
+01/01/2020 14:29,48,IMG006,Computerized tomography (CT) with contrast,TC Room,Radiologist Doctor,0
+01/01/2020 14:30,28,RES003,Thoracentesis (diagnostic),Surgery,ER Doctor Senior,1
+01/01/2020 14:32,70,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,2
+01/01/2020 14:33,83,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 14:33,34,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 14:34,82,OTR004,Isolation procedures,Clinic Room,Nurse,4
+01/01/2020 14:34,28,AIO001,Medical clinical evaluation,Surgery,ER Doctor Senior,0
+01/01/2020 14:36,79,AIO002,Nurse clinical evaluation,Mid Stay Box,Nurse,3
+01/01/2020 14:38,80,AIO006,Death,Death,None,None
+01/01/2020 14:39,74,ADM021,"Administration of therapeutic substances, NEC",Mid Stay Box,Nurse,0
+01/01/2020 14:39,79,ADM021,"Administration of therapeutic substances, NEC",Mid Stay Box,Nurse,1
+01/01/2020 14:42,34,CNS002,Lumbar puncture,Gynecology Room,ER Doctor Junior,2
+01/01/2020 14:45,50,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 14:47,28,CNS002,Lumbar puncture,Surgery,ER Doctor Junior,3
+01/01/2020 14:48,70,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 14:55,82,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 14:55,78,AIO002,Nurse clinical evaluation,Triage Room,Nurse,3
+01/01/2020 14:56,70,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,1
+01/01/2020 14:57,48,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 14:57,70,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 14:58,84,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 14:59,86,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 15:00,74,RES003,Thoracentesis (diagnostic),Mid Stay Box,ER Doctor Junior,4
+01/01/2020 15:01,81,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 15:02,85,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 15:03,79,GIS006,Paracentesis,Mid Stay Box,ER Doctor Senior,1
+01/01/2020 15:04,79,ADM010,Vaccinations,Mid Stay Box,Nurse,1
+01/01/2020 15:07,72,OTR004,Isolation procedures,Triage Room,Nurse,2
+01/01/2020 15:07,28,MST028,"Subcutaneous tissue and fascia procedures, NEC",Surgery,ER Doctor Senior,0
+01/01/2020 15:10,72,AIO002,Nurse clinical evaluation,Triage Room,Nurse,2
+01/01/2020 15:12,28,IMG009,Plain radiography,Surgery,Radiologist Doctor,0
+01/01/2020 15:13,74,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Junior,0
+01/01/2020 15:13,84,AIO002,Nurse clinical evaluation,Triage Room,Nurse,2
+01/01/2020 15:16,83,AIO002,Nurse clinical evaluation,Mid Stay Box,Nurse,4
+01/01/2020 15:17,34,MAM007,Electrocardiogram (ECG),Gynecology Room,Nurse,0
+01/01/2020 15:19,87,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 15:22,50,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 15:22,79,ADM020,"Administration of diagnostic substances, NEC",Mid Stay Box,Nurse,1
+01/01/2020 15:22,74,ADM010,Vaccinations,Mid Stay Box,Nurse,2
+01/01/2020 15:23,88,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 15:24,78,MAM007,Electrocardiogram (ECG),Triage Room,Nurse,3
+01/01/2020 15:26,28,AIO001,Medical clinical evaluation,Surgery,ER Doctor Junior,1
+01/01/2020 15:27,84,MAM007,Electrocardiogram (ECG),Triage Room,Nurse,5
+01/01/2020 15:29,83,OTR004,Isolation procedures,Mid Stay Box,ER Doctor Senior,0
+01/01/2020 15:29,50,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,0
+01/01/2020 15:29,70,OTR004,Isolation procedures,Triage Room,Nurse,2
+01/01/2020 15:31,89,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 15:32,74,ADM020,"Administration of diagnostic substances, NEC",Mid Stay Box,Nurse,1
+01/01/2020 15:32,90,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 15:36,91,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 15:37,84,AIO006,Death,Death,None,None
+01/01/2020 15:37,28,GIS006,Paracentesis,Surgery,ER Doctor Senior,0
+01/01/2020 15:38,82,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 15:40,34,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 15:40,83,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Junior,1
+01/01/2020 15:40,72,OTR004,Isolation procedures,Clinic Room,Nurse,2
+01/01/2020 15:41,70,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 15:41,34,ADM020,"Administration of diagnostic substances, NEC",Gynecology Room,Nurse,2
+01/01/2020 15:43,78,OTR004,Isolation procedures,Triage Room,ER Doctor Senior,1
+01/01/2020 15:45,92,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 15:47,89,OTR004,Isolation procedures,Clinic Room,ER Doctor Junior,2
+01/01/2020 15:47,72,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 15:48,33,AIO002,Nurse clinical evaluation,Surgery,Nurse,1
+01/01/2020 15:50,50,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 15:50,93,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 15:59,74,CNS002,Lumbar puncture,Mid Stay Box,ER Doctor Senior,0
+01/01/2020 16:01,88,OTR004,Isolation procedures,Clinic Room,Nurse,3
+01/01/2020 16:01,34,MAM007,Electrocardiogram (ECG),Gynecology Room,Nurse,0
+01/01/2020 16:03,90,AIO002,Nurse clinical evaluation,Triage Room,Nurse,2
+01/01/2020 16:03,89,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 16:05,70,OTR004,Isolation procedures,Triage Room,Nurse,0
+01/01/2020 16:05,93,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 16:06,70,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 16:07,91,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,3
+01/01/2020 16:07,94,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 16:09,50,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,1
+01/01/2020 16:09,28,AIO002,Nurse clinical evaluation,Polytrauma Box,Nurse,5
+01/01/2020 16:10,78,MAM007,Electrocardiogram (ECG),Triage Room,Nurse,4
+01/01/2020 16:10,33,ADM019,Potential COVID-19 therapies,Surgery,ER Doctor Senior,0
+01/01/2020 16:10,50,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 16:11,83,ESA006,Cardioversion,Mid Stay Box,ER Doctor Senior,1
+01/01/2020 16:12,72,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 16:13,34,SKB010,"Skin and breast procedures, NEC",Gynecology Room,ER Doctor Junior,0
+01/01/2020 16:14,83,ADM010,Vaccinations,Mid Stay Box,Nurse,0
+01/01/2020 16:15,93,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,2
+01/01/2020 16:15,74,AIO002,Nurse clinical evaluation,Polytrauma Box,Nurse,0
+01/01/2020 16:16,95,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 16:22,93,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 16:24,90,AIO006,Death,Death,None,None
+01/01/2020 16:24,89,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 16:25,96,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 16:28,91,OTR004,Isolation procedures,Clinic Room,ER Doctor Senior,1
+01/01/2020 16:28,41,OTR004,Isolation procedures,Gynecology Room,Nurse,1
+01/01/2020 16:28,97,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 16:29,98,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 16:30,88,MAM007,Electrocardiogram (ECG),Clinic Room,ER Doctor Junior,2
+01/01/2020 16:31,28,AIO001,Medical clinical evaluation,Polytrauma Box,ER Doctor Senior,0
+01/01/2020 16:32,78,AIO006,Death,Death,None,None
+01/01/2020 16:33,33,IMG009,Plain radiography,Surgery,Radiologist Doctor,0
+01/01/2020 16:36,34,AIO008,Left without being seen,Discharge and LWBS,None,None
+01/01/2020 16:36,28,IMG009,Plain radiography,Polytrauma Box,Radiologist Doctor,0
+01/01/2020 16:37,83,ADM020,"Administration of diagnostic substances, NEC",Mid Stay Box,Nurse,3
+01/01/2020 16:43,41,MAM007,Electrocardiogram (ECG),Gynecology Room,ER Doctor Senior,1
+01/01/2020 16:43,28,AIO008,Left without being seen,Discharge and LWBS,None,None
+01/01/2020 16:47,95,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 16:47,99,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 16:48,41,ADM014,Regional anesthesia,Gynecology Room,ER Doctor Junior,2
+01/01/2020 16:50,91,AIO006,Death,Death,None,None
+01/01/2020 16:50,33,AIO001,Medical clinical evaluation,Surgery,ER Doctor Senior,1
+01/01/2020 16:54,70,OTR004,Isolation procedures,Clinic Room,ER Doctor Senior,0
+01/01/2020 16:59,100,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 16:59,50,IMG009,Plain radiography,Rx Room,Radiologist Doctor,0
+01/01/2020 17:00,102,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 17:01,41,IMG008,Ultrasonography,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 17:02,93,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 17:02,102,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 17:03,98,IMG007,Computerized tomography (CT) without contrast,TC Room,Radiologist Doctor,0
+01/01/2020 17:05,33,ESA006,Cardioversion,Surgery,ER Doctor Junior,0
+01/01/2020 17:05,70,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 17:06,89,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 17:06,72,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 17:07,72,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,1
+01/01/2020 17:10,41,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 17:11,72,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 17:12,50,AIO008,Left without being seen,Discharge and LWBS,None,None
+01/01/2020 17:12,103,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 17:14,101,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 17:19,33,AIO001,Medical clinical evaluation,Surgery,ER Doctor Junior,0
+01/01/2020 17:21,100,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 17:22,74,ADM014,Regional anesthesia,Polytrauma Box,ER Doctor Senior,0
+01/01/2020 17:24,98,AIO006,Death,Death,None,None
+01/01/2020 17:24,104,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 17:25,41,OTR004,Isolation procedures,Gynecology Room,Nurse,1
+01/01/2020 17:26,70,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,0
+01/01/2020 17:27,33,ADM020,"Administration of diagnostic substances, NEC",Surgery,Nurse,2
+01/01/2020 17:28,83,RES003,Thoracentesis (diagnostic),Mid Stay Box,ER Doctor Senior,1
+01/01/2020 17:28,33,IMG008,Ultrasonography,Surgery,Radiologist Doctor,0
+01/01/2020 17:29,74,AIO001,Medical clinical evaluation,Polytrauma Box,ER Doctor Senior,0
+01/01/2020 17:31,103,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 17:32,70,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 17:33,106,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 17:35,105,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 17:35,74,AIO001,Medical clinical evaluation,Polytrauma Box,ER Doctor Junior,2
+01/01/2020 17:36,100,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,3
+01/01/2020 17:36,74,CNS002,Lumbar puncture,Polytrauma Box,ER Doctor Junior,0
+01/01/2020 17:44,83,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Senior,0
+01/01/2020 17:46,74,IMG009,Plain radiography,Polytrauma Box,Radiologist Doctor,0
+01/01/2020 17:47,107,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 17:48,36,AIO001,Medical clinical evaluation,Surgery,ER Doctor Junior,1
+01/01/2020 17:51,70,AIO008,Left without being seen,Discharge and LWBS,None,None
+01/01/2020 17:51,72,OTR004,Isolation procedures,Clinic Room,ER Doctor Senior,0
+01/01/2020 17:54,33,AIO006,Death,Death,None,None
+01/01/2020 17:56,41,SKB010,"Skin and breast procedures, NEC",Gynecology Room,ER Doctor Senior,1
+01/01/2020 17:58,101,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 17:58,83,ADM020,"Administration of diagnostic substances, NEC",Mid Stay Box,Nurse,0
+01/01/2020 18:02,108,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 18:04,109,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 18:05,83,ADM014,Regional anesthesia,Mid Stay Box,ER Doctor Junior,0
+01/01/2020 18:09,36,MAM007,Electrocardiogram (ECG),Surgery,ER Doctor Senior,0
+01/01/2020 18:14,72,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 18:18,111,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 18:21,107,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 18:23,74,AIO001,Medical clinical evaluation,Polytrauma Box,ER Doctor Senior,0
+01/01/2020 18:24,110,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 18:24,83,ADM019,Potential COVID-19 therapies,Mid Stay Box,ER Doctor Senior,0
+01/01/2020 18:25,113,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 18:26,72,AIO002,Nurse clinical evaluation,Triage Room,Nurse,1
+01/01/2020 18:27,41,ADM014,Regional anesthesia,Gynecology Room,ER Doctor Senior,1
+01/01/2020 18:29,36,ADM010,Vaccinations,Surgery,Nurse,0
+01/01/2020 18:30,105,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 18:32,36,ADM020,"Administration of diagnostic substances, NEC",Surgery,Nurse,0
+01/01/2020 18:37,112,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 18:39,114,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 18:44,116,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 18:45,74,AIO008,Left without being seen,Discharge and LWBS,None,None
+01/01/2020 18:46,41,ESA006,Cardioversion,Gynecology Room,ER Doctor Junior,0
+01/01/2020 18:46,88,OTR004,Isolation procedures,Clinic Room,ER Doctor Senior,1
+01/01/2020 18:51,108,AIO002,Nurse clinical evaluation,Triage Room,Nurse,1
+01/01/2020 18:51,115,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 18:53,36,AIO006,Death,Death,None,None
+01/01/2020 18:56,111,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
+01/01/2020 18:58,41,ADM014,Regional anesthesia,Gynecology Room,ER Doctor Senior,1
+01/01/2020 18:58,110,OTR004,Isolation procedures,Triage Room,Nurse,0
+01/01/2020 19:02,72,AIO008,Left without being seen,Discharge and LWBS,None,None
+01/01/2020 19:02,44,AIO001,Medical clinical evaluation,Surgery,ER Doctor Senior,1
+01/01/2020 19:03,83,CNS002,Lumbar puncture,Mid Stay Box,ER Doctor Senior,0
+01/01/2020 19:03,88,SKB010,"Skin and breast procedures, NEC",Clinic Room,ER Doctor Senior,1
+01/01/2020 19:04,88,ADM010,Vaccinations,Clinic Room,Nurse,2
+01/01/2020 19:05,118,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 19:11,114,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 19:15,41,ADM014,Regional anesthesia,Gynecology Room,ER Doctor Junior,0
+01/01/2020 19:15,119,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 19:17,108,OTR004,Isolation procedures,Triage Room,Nurse,1
+01/01/2020 19:18,89,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 19:19,89,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,3
+01/01/2020 19:20,117,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 19:25,89,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,3
+01/01/2020 19:25,121,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 19:27,41,CNS002,Lumbar puncture,Gynecology Room,ER Doctor Junior,0
+01/01/2020 19:27,120,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 19:28,83,ADM014,Regional anesthesia,Mid Stay Box,ER Doctor Junior,2
+01/01/2020 19:28,94,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Senior,1
+01/01/2020 19:29,44,ADM014,Regional anesthesia,Surgery,ER Doctor Junior,1
+01/01/2020 19:29,95,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 19:30,88,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,2
+01/01/2020 19:30,118,AIO002,Nurse clinical evaluation,Mid Stay Box,Nurse,0
+01/01/2020 19:31,122,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 19:34,116,IMG009,Plain radiography,Rx Room,Radiologist Doctor,0
+01/01/2020 19:35,94,ADM014,Regional anesthesia,Mid Stay Box,ER Doctor Junior,0
+01/01/2020 19:37,43,OTR004,Isolation procedures,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 19:38,112,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,2
+01/01/2020 19:40,83,MAM007,Electrocardiogram (ECG),Mid Stay Box,ER Doctor Senior,1
+01/01/2020 19:41,108,AIO002,Nurse clinical evaluation,Triage Room,Nurse,1
+01/01/2020 19:41,112,IMG008,Ultrasonography,Clinic Room,Radiologist Doctor,0
+01/01/2020 19:45,121,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 19:46,44,OTR004,Isolation procedures,Surgery,ER Doctor Junior,1
+01/01/2020 19:49,44,IMG009,Plain radiography,Surgery,Radiologist Doctor,0
+01/01/2020 19:50,100,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 19:51,94,OTR004,Isolation procedures,Mid Stay Box,Nurse,2
+01/01/2020 19:51,44,AIO001,Medical clinical evaluation,Surgery,ER Doctor Senior,1
+01/01/2020 19:52,89,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 19:53,118,ADM021,"Administration of therapeutic substances, NEC",Mid Stay Box,Nurse,0
+01/01/2020 19:53,124,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 19:59,94,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Senior,1
+01/01/2020 20:00,123,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 20:00,112,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+01/01/2020 20:01,95,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 20:02,126,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 20:04,88,AIO006,Death,Death,None,None
+01/01/2020 20:05,108,OTR004,Isolation procedures,Triage Room,ER Doctor Senior,0
+01/01/2020 20:06,126,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 20:07,44,MAM007,Electrocardiogram (ECG),Surgery,Nurse,2
+01/01/2020 20:14,112,OTR004,Isolation procedures,Clinic Room,ER Doctor Junior,0
+01/01/2020 20:14,127,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 20:17,43,AIO002,Nurse clinical evaluation,Gynecology Room,Nurse,3
+01/01/2020 20:18,100,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,1
+01/01/2020 20:18,118,SKB010,"Skin and breast procedures, NEC",Mid Stay Box,ER Doctor Junior,1
+01/01/2020 20:22,125,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 20:22,111,OTR004,Isolation procedures,Clinic Room,ER Doctor Senior,0
+01/01/2020 20:25,83,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 20:30,43,SKB010,"Skin and breast procedures, NEC",Gynecology Room,ER Doctor Senior,0
+01/01/2020 20:31,123,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 20:31,44,MST028,"Subcutaneous tissue and fascia procedures, NEC",Surgery,ER Doctor Senior,0
+01/01/2020 20:32,89,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 20:32,111,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,1
+01/01/2020 20:32,129,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 20:34,108,MAM007,Electrocardiogram (ECG),Triage Room,Nurse,0
+01/01/2020 20:36,128,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 20:37,94,MAM007,Electrocardiogram (ECG),Mid Stay Box,ER Doctor Senior,1
+01/01/2020 20:37,118,OTR004,Isolation procedures,Mid Stay Box,ER Doctor Junior,0
+01/01/2020 20:40,59,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 20:43,110,OTR004,Isolation procedures,Triage Room,ER Doctor Junior,1
+01/01/2020 20:43,100,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+01/01/2020 20:46,130,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 20:46,94,OTR004,Isolation procedures,Mid Stay Box,Nurse,0
+01/01/2020 20:47,44,OTR004,Isolation procedures,Surgery,ER Doctor Senior,0
+01/01/2020 20:49,112,AIO002,Nurse clinical evaluation,Mid Stay Box,Nurse,2
+01/01/2020 20:49,131,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 20:49,59,AIO006,Death,Death,None,None
+01/01/2020 20:49,110,ADM010,Vaccinations,Triage Room,Nurse,4
+01/01/2020 20:50,66,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 20:50,132,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 20:50,133,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 20:55,108,AIO006,Death,Death,None,None
+01/01/2020 20:55,114,OTR004,Isolation procedures,Triage Room,ER Doctor Senior,1
+01/01/2020 20:56,43,AIO002,Nurse clinical evaluation,ER Box,Nurse,2
+01/01/2020 20:58,111,ADM010,Vaccinations,Clinic Room,Nurse,1
+01/01/2020 21:06,135,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 21:08,114,MAM007,Electrocardiogram (ECG),Triage Room,Nurse,4
+01/01/2020 21:11,133,AIO002,Nurse clinical evaluation,Polytrauma Box,Nurse,2
+01/01/2020 21:12,100,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,3
+01/01/2020 21:12,66,MAM007,Electrocardiogram (ECG),Gynecology Room,ER Doctor Junior,1
+01/01/2020 21:13,44,CNS002,Lumbar puncture,Surgery,ER Doctor Senior,0
+01/01/2020 21:15,134,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 21:16,110,AIO006,Death,Death,None,None
+01/01/2020 21:16,112,MST028,"Subcutaneous tissue and fascia procedures, NEC",Mid Stay Box,ER Doctor Junior,0
+01/01/2020 21:19,100,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,2
+01/01/2020 21:20,136,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 21:23,129,OTR004,Isolation procedures,Clinic Room,Nurse,1
+01/01/2020 21:23,86,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 21:24,130,OTR004,Isolation procedures,Clinic Room,ER Doctor Junior,2
+01/01/2020 21:24,100,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,2
+01/01/2020 21:25,94,ADM014,Regional anesthesia,Mid Stay Box,ER Doctor Senior,1
+01/01/2020 21:27,117,OTR004,Isolation procedures,Triage Room,Nurse,0
+01/01/2020 21:28,137,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 21:29,114,OTR004,Isolation procedures,Triage Room,ER Doctor Junior,3
+01/01/2020 21:29,139,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 21:32,43,AIO001,Medical clinical evaluation,ER Box,ER Doctor Senior,0
+01/01/2020 21:32,44,ESA006,Cardioversion,Surgery,ER Doctor Junior,1
+01/01/2020 21:32,117,ADM010,Vaccinations,Triage Room,Nurse,0
+01/01/2020 21:35,138,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 21:35,130,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,2
+01/01/2020 21:39,112,OTR004,Isolation procedures,Mid Stay Box,ER Doctor Junior,0
+01/01/2020 21:41,140,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 21:42,94,MAM007,Electrocardiogram (ECG),Mid Stay Box,ER Doctor Senior,0
+01/01/2020 21:42,112,ADM020,"Administration of diagnostic substances, NEC",Mid Stay Box,Nurse,4
+01/01/2020 21:43,129,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,1
+01/01/2020 21:47,114,ADM010,Vaccinations,Triage Room,Nurse,2
+01/01/2020 21:51,86,SKB010,"Skin and breast procedures, NEC",Gynecology Room,ER Doctor Senior,1
+01/01/2020 21:51,94,ADM021,"Administration of therapeutic substances, NEC",Mid Stay Box,Nurse,4
+01/01/2020 21:52,135,OTR004,Isolation procedures,Triage Room,Nurse,0
+01/01/2020 21:52,137,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 21:53,100,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+01/01/2020 21:53,114,AIO006,Death,Death,None,None
+01/01/2020 21:54,43,GIS006,Paracentesis,ER Box,ER Doctor Junior,1
+01/01/2020 21:55,46,AIO001,Medical clinical evaluation,Surgery,ER Doctor Junior,3
+01/01/2020 21:55,129,OTR004,Isolation procedures,Clinic Room,Nurse,1
+01/01/2020 21:56,46,AIO006,Death,Death,None,None
+01/01/2020 21:58,117,AIO002,Nurse clinical evaluation,Triage Room,Nurse,2
+01/01/2020 22:00,142,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 22:01,136,OTR004,Isolation procedures,Clinic Room,Nurse,3
+01/01/2020 22:03,138,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 22:06,143,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 22:07,112,IMG008,Ultrasonography,Mid Stay Box,Radiologist Doctor,0
+01/01/2020 22:08,135,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 22:08,112,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Junior,1
+01/01/2020 22:10,52,AIO002,Nurse clinical evaluation,Surgery,Nurse,1
+01/01/2020 22:11,141,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 22:12,43,ADM010,Vaccinations,ER Box,Nurse,4
+01/01/2020 22:12,140,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 22:12,144,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 22:12,145,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 22:13,43,ADM020,"Administration of diagnostic substances, NEC",ER Box,Nurse,0
+01/01/2020 22:13,147,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 22:17,148,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 22:17,100,OTR004,Isolation procedures,Triage Room,Nurse,0
+01/01/2020 22:18,149,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 22:19,86,MAM007,Electrocardiogram (ECG),Gynecology Room,ER Doctor Junior,0
+01/01/2020 22:21,86,CNS002,Lumbar puncture,Gynecology Room,ER Doctor Junior,0
+01/01/2020 22:22,94,RES003,Thoracentesis (diagnostic),Mid Stay Box,ER Doctor Senior,1
+01/01/2020 22:24,86,IMG008,Ultrasonography,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 22:26,118,ADM019,Potential COVID-19 therapies,Mid Stay Box,ER Doctor Senior,0
+01/01/2020 22:26,129,AIO002,Nurse clinical evaluation,ER Box,Nurse,1
+01/01/2020 22:28,52,SKB010,"Skin and breast procedures, NEC",Surgery,ER Doctor Junior,2
+01/01/2020 22:29,150,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 22:33,100,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 22:34,112,CNS002,Lumbar puncture,Mid Stay Box,ER Doctor Junior,1
+01/01/2020 22:34,94,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Senior,1
+01/01/2020 22:35,146,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 22:36,43,MST028,"Subcutaneous tissue and fascia procedures, NEC",ER Box,ER Doctor Junior,3
+01/01/2020 22:38,117,MAM007,Electrocardiogram (ECG),Triage Room,ER Doctor Senior,0
+01/01/2020 22:41,94,ESA006,Cardioversion,Mid Stay Box,ER Doctor Junior,0
+01/01/2020 22:42,152,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 22:43,144,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 22:44,86,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 22:44,118,ADM021,"Administration of therapeutic substances, NEC",Mid Stay Box,Nurse,1
+01/01/2020 22:44,147,OTR004,Isolation procedures,Triage Room,Nurse,0
+01/01/2020 22:45,147,MAM007,Electrocardiogram (ECG),Triage Room,ER Doctor Junior,2
+01/01/2020 22:49,52,MST028,"Subcutaneous tissue and fascia procedures, NEC",Surgery,ER Doctor Senior,1
+01/01/2020 22:49,100,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 22:53,112,AIO002,Nurse clinical evaluation,Mid Stay Box,Nurse,2
+01/01/2020 22:55,150,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 22:56,146,AIO005,Hospitalization,Hospital Ward,None,None
+01/01/2020 22:57,94,GIS006,Paracentesis,Mid Stay Box,ER Doctor Junior,0
+01/01/2020 22:57,52,ADM014,Regional anesthesia,Surgery,ER Doctor Senior,1
+01/01/2020 22:59,151,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 23:00,112,RES003,Thoracentesis (diagnostic),Mid Stay Box,ER Doctor Junior,2
+01/01/2020 23:02,147,AIO006,Death,Death,None,None
+01/01/2020 23:03,148,AIO008,Left without being seen,Discharge and LWBS,None,None
+01/01/2020 23:03,94,ADM019,Potential COVID-19 therapies,Mid Stay Box,ER Doctor Senior,1
+01/01/2020 23:04,43,OTR004,Isolation procedures,ER Box,ER Doctor Senior,0
+01/01/2020 23:07,100,OTR004,Isolation procedures,Triage Room,Nurse,0
+01/01/2020 23:09,153,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 23:10,52,SKB010,"Skin and breast procedures, NEC",Surgery,ER Doctor Junior,0
+01/01/2020 23:12,94,IMG009,Plain radiography,Mid Stay Box,Radiologist Doctor,0
+01/01/2020 23:13,154,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 23:18,112,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Junior,2
+01/01/2020 23:20,156,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 23:21,43,RES003,Thoracentesis (diagnostic),ER Box,ER Doctor Senior,0
+01/01/2020 23:22,86,SKB010,"Skin and breast procedures, NEC",Gynecology Room,ER Doctor Junior,1
+01/01/2020 23:22,43,AIO001,Medical clinical evaluation,ER Box,ER Doctor Senior,0
+01/01/2020 23:25,155,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 23:26,117,OTR004,Isolation procedures,Triage Room,ER Doctor Senior,1
+01/01/2020 23:26,158,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 23:32,43,RES003,Thoracentesis (diagnostic),ER Box,ER Doctor Junior,0
+01/01/2020 23:36,52,ADM014,Regional anesthesia,Surgery,ER Doctor Senior,0
+01/01/2020 23:37,52,ADM019,Potential COVID-19 therapies,Surgery,ER Doctor Senior,0
+01/01/2020 23:38,157,AIO004,Registration,Waiting Room,Administrative Assistant,1
+01/01/2020 23:40,117,ADM010,Vaccinations,Triage Room,Nurse,1
+01/01/2020 23:41,43,AIO001,Medical clinical evaluation,ER Box,ER Doctor Junior,0
+01/01/2020 23:42,96,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+01/01/2020 23:42,94,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Senior,1
+01/01/2020 23:42,86,AIO002,Nurse clinical evaluation,Polytrauma Box,Nurse,1
+01/01/2020 23:43,94,ADM014,Regional anesthesia,Mid Stay Box,ER Doctor Junior,3
+01/01/2020 23:45,100,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+01/01/2020 23:45,43,AIO008,Left without being seen,Discharge and LWBS,None,None
+01/01/2020 23:45,96,MAM007,Electrocardiogram (ECG),Gynecology Room,ER Doctor Junior,4
+01/01/2020 23:46,118,MST028,"Subcutaneous tissue and fascia procedures, NEC",Mid Stay Box,ER Doctor Senior,1
+01/01/2020 23:49,112,ADM019,Potential COVID-19 therapies,Mid Stay Box,ER Doctor Senior,0
+01/01/2020 23:50,159,AIO004,Registration,Waiting Room,Administrative Assistant,0
+01/01/2020 23:50,112,ESA006,Cardioversion,Mid Stay Box,ER Doctor Junior,4
+01/01/2020 23:52,112,MST028,"Subcutaneous tissue and fascia procedures, NEC",Mid Stay Box,ER Doctor Junior,4
+01/01/2020 23:53,153,OTR004,Isolation procedures,Triage Room,Nurse,0
+01/01/2020 23:54,155,AIO007,Discharge,Discharge and LWBS,None,None
+01/01/2020 23:56,118,ESA006,Cardioversion,Mid Stay Box,ER Doctor Senior,1
+01/01/2020 23:59,117,MAM007,Electrocardiogram (ECG),Triage Room,ER Doctor Junior,2
+02/01/2020 00:00,52,GIS006,Paracentesis,Surgery,ER Doctor Junior,1
+02/01/2020 00:00,153,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+02/01/2020 00:01,52,ADM019,Potential COVID-19 therapies,Surgery,ER Doctor Junior,1
+02/01/2020 00:05,160,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 00:06,118,IMG009,Plain radiography,Rx Room,Radiologist Doctor,0
+02/01/2020 00:06,162,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 00:08,158,OTR004,Isolation procedures,Triage Room,Nurse,0
+02/01/2020 00:09,94,CNS002,Lumbar puncture,Mid Stay Box,ER Doctor Junior,3
+02/01/2020 00:13,153,AIO007,Discharge,Discharge and LWBS,None,None
+02/01/2020 00:17,96,IMG008,Ultrasonography,Gynecology Room,Gynecologist Doctor,0
+02/01/2020 00:17,161,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 00:19,94,MAM007,Electrocardiogram (ECG),Mid Stay Box,Nurse,1
+02/01/2020 00:21,86,MST028,"Subcutaneous tissue and fascia procedures, NEC",Polytrauma Box,ER Doctor Junior,0
+02/01/2020 00:21,127,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+02/01/2020 00:23,162,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Junior,1
+02/01/2020 00:24,112,ESA006,Cardioversion,Mid Stay Box,ER Doctor Senior,1
+02/01/2020 00:25,94,AIO008,Left without being seen,Discharge and LWBS,None,None
+02/01/2020 00:25,112,AIO008,Left without being seen,Discharge and LWBS,None,None
+02/01/2020 00:29,164,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 00:29,86,AIO001,Medical clinical evaluation,Polytrauma Box,ER Doctor Junior,2
+02/01/2020 00:33,162,IMG009,Plain radiography,Mid Stay Box,Radiologist Doctor,0
+02/01/2020 00:34,96,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+02/01/2020 00:35,117,MAM007,Electrocardiogram (ECG),Triage Room,ER Doctor Senior,1
+02/01/2020 00:37,163,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 00:38,96,AIO002,Nurse clinical evaluation,Gynecology Room,Nurse,1
+02/01/2020 00:40,158,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+02/01/2020 00:40,117,ADM010,Vaccinations,Triage Room,Nurse,2
+02/01/2020 00:43,162,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Junior,2
+02/01/2020 00:44,52,ESA006,Cardioversion,Surgery,ER Doctor Senior,0
+02/01/2020 00:44,135,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+02/01/2020 00:44,86,ESA006,Cardioversion,Polytrauma Box,ER Doctor Junior,1
+02/01/2020 00:48,129,RES003,Thoracentesis (diagnostic),ER Box,ER Doctor Senior,1
+02/01/2020 00:49,96,SKB010,"Skin and breast procedures, NEC",Gynecology Room,ER Doctor Senior,1
+02/01/2020 00:51,118,AIO002,Nurse clinical evaluation,Triage Room,Nurse,1
+02/01/2020 00:54,117,MAM007,Electrocardiogram (ECG),Triage Room,Nurse,0
+02/01/2020 00:58,165,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 01:02,86,IMG008,Ultrasonography,Polytrauma Box,Radiologist Doctor,0
+02/01/2020 01:03,117,OTR004,Isolation procedures,Triage Room,ER Doctor Junior,1
+02/01/2020 01:04,96,ADM010,Vaccinations,Gynecology Room,Nurse,2
+02/01/2020 01:04,161,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+02/01/2020 01:06,52,RES003,Thoracentesis (diagnostic),Surgery,ER Doctor Senior,0
+02/01/2020 01:06,167,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 01:07,166,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 01:10,129,AIO001,Medical clinical evaluation,ER Box,ER Doctor Senior,1
+02/01/2020 01:12,86,AIO006,Death,Death,None,None
+02/01/2020 01:15,118,MAM007,Electrocardiogram (ECG),Triage Room,ER Doctor Junior,0
+02/01/2020 01:15,127,AIO007,Discharge,Discharge and LWBS,None,None
+02/01/2020 01:20,163,AIO002,Nurse clinical evaluation,Triage Room,Nurse,1
+02/01/2020 01:21,96,ADM020,"Administration of diagnostic substances, NEC",Gynecology Room,Nurse,0
+02/01/2020 01:24,168,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 01:26,169,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 01:26,129,ADM019,Potential COVID-19 therapies,ER Box,ER Doctor Senior,1
+02/01/2020 01:29,52,AIO001,Medical clinical evaluation,Surgery,ER Doctor Senior,0
+02/01/2020 01:37,129,CNS002,Lumbar puncture,ER Box,ER Doctor Junior,0
+02/01/2020 01:38,96,OTR004,Isolation procedures,Gynecology Room,Nurse,0
+02/01/2020 01:38,52,ESA006,Cardioversion,Surgery,ER Doctor Junior,1
+02/01/2020 01:43,117,AIO006,Death,Death,None,None
+02/01/2020 01:45,118,OTR004,Isolation procedures,Triage Room,ER Doctor Senior,1
+02/01/2020 01:47,130,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+02/01/2020 01:48,166,OTR004,Isolation procedures,Triage Room,Nurse,1
+02/01/2020 01:48,52,MST028,"Subcutaneous tissue and fascia procedures, NEC",Surgery,ER Doctor Senior,1
+02/01/2020 01:48,132,OTR004,Isolation procedures,Clinic Room,ER Doctor Senior,0
+02/01/2020 01:49,133,CNS002,Lumbar puncture,Polytrauma Box,ER Doctor Senior,1
+02/01/2020 01:52,118,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+02/01/2020 01:54,170,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 01:55,168,AIO001,Medical clinical evaluation,Polytrauma Box,ER Doctor Junior,0
+02/01/2020 01:55,133,AIO006,Death,Death,None,None
+02/01/2020 01:56,171,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 01:57,168,ESA006,Cardioversion,Polytrauma Box,ER Doctor Junior,0
+02/01/2020 01:58,97,AIO001,Medical clinical evaluation,Gynecology Room,Gynecologist Doctor,0
+02/01/2020 01:59,163,OTR004,Isolation procedures,Triage Room,Nurse,0
+02/01/2020 02:00,52,AIO002,Nurse clinical evaluation,Surgery,Nurse,1
+02/01/2020 02:00,173,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 02:04,97,ESA006,Cardioversion,Gynecology Room,ER Doctor Junior,0
+02/01/2020 02:06,132,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+02/01/2020 02:06,135,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+02/01/2020 02:12,130,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,2
+02/01/2020 02:13,166,MAM007,Electrocardiogram (ECG),Triage Room,ER Doctor Junior,1
+02/01/2020 02:14,174,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 02:15,118,AIO006,Death,Death,None,None
+02/01/2020 02:15,172,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 02:15,145,OTR004,Isolation procedures,Clinic Room,ER Doctor Senior,1
+02/01/2020 02:15,175,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 02:16,141,OTR004,Isolation procedures,Clinic Room,ER Doctor Junior,0
+02/01/2020 02:16,166,AIO006,Death,Death,None,None
+02/01/2020 02:17,163,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+02/01/2020 02:21,96,AIO005,Hospitalization,Hospital Ward,None,None
+02/01/2020 02:22,52,ADM021,"Administration of therapeutic substances, NEC",Surgery,Nurse,1
+02/01/2020 02:25,135,AIO005,Hospitalization,Hospital Ward,None,None
+02/01/2020 02:26,172,AIO002,Nurse clinical evaluation,Polytrauma Box,Nurse,4
+02/01/2020 02:28,136,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+02/01/2020 02:29,97,MAM007,Electrocardiogram (ECG),Gynecology Room,Nurse,3
+02/01/2020 02:31,141,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+02/01/2020 02:34,52,IMG009,Plain radiography,Surgery,Radiologist Doctor,0
+02/01/2020 02:35,130,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,2
+02/01/2020 02:35,176,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 02:36,130,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+02/01/2020 02:40,145,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+02/01/2020 02:42,132,AIO007,Discharge,Discharge and LWBS,None,None
+02/01/2020 02:42,97,SKB010,"Skin and breast procedures, NEC",Gynecology Room,ER Doctor Junior,1
+02/01/2020 02:44,177,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 02:49,176,AIO007,Discharge,Discharge and LWBS,None,None
+02/01/2020 02:51,52,AIO001,Medical clinical evaluation,Surgery,ER Doctor Senior,1
+02/01/2020 02:52,152,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+02/01/2020 02:58,97,CNS002,Lumbar puncture,Gynecology Room,ER Doctor Junior,0
+02/01/2020 02:59,136,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,0
+02/01/2020 02:59,156,OTR004,Isolation procedures,Clinic Room,Nurse,1
+02/01/2020 02:59,179,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 03:01,154,OTR004,Isolation procedures,Clinic Room,ER Doctor Senior,0
+02/01/2020 03:02,178,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 03:06,54,AIO002,Nurse clinical evaluation,Surgery,Nurse,2
+02/01/2020 03:07,141,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+02/01/2020 03:07,180,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 03:09,97,OTR004,Isolation procedures,Gynecology Room,Nurse,3
+02/01/2020 03:12,152,IMG008,Ultrasonography,Clinic Room,Radiologist Doctor,0
+02/01/2020 03:15,156,AIO006,Death,Death,None,None
+02/01/2020 03:17,181,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 03:18,52,AIO006,Death,Death,None,None
+02/01/2020 03:18,158,OTR004,Isolation procedures,Clinic Room,ER Doctor Junior,0
+02/01/2020 03:18,162,OTR004,Isolation procedures,Mid Stay Box,ER Doctor Senior,1
+02/01/2020 03:19,182,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 03:21,154,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+02/01/2020 03:25,159,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,2
+02/01/2020 03:29,136,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,0
+02/01/2020 03:29,183,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 03:31,172,MST028,"Subcutaneous tissue and fascia procedures, NEC",Polytrauma Box,ER Doctor Senior,0
+02/01/2020 03:32,97,ADM020,"Administration of diagnostic substances, NEC",Gynecology Room,Nurse,1
+02/01/2020 03:32,152,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,4
+02/01/2020 03:33,97,ADM010,Vaccinations,Gynecology Room,Nurse,1
+02/01/2020 03:35,158,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,0
+02/01/2020 03:36,161,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,4
+02/01/2020 03:36,158,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,4
+02/01/2020 03:37,154,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,2
+02/01/2020 03:37,161,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,4
+02/01/2020 03:38,54,CNS002,Lumbar puncture,Surgery,ER Doctor Junior,1
+02/01/2020 03:38,159,ADM010,Vaccinations,Clinic Room,Nurse,3
+02/01/2020 03:39,177,OTR004,Isolation procedures,ER Box,ER Doctor Junior,3
+02/01/2020 03:40,184,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 03:41,182,AIO007,Discharge,Discharge and LWBS,None,None
+02/01/2020 03:44,181,OTR004,Isolation procedures,ER Box,ER Doctor Junior,2
+02/01/2020 03:45,185,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 03:47,97,ADM020,"Administration of diagnostic substances, NEC",Gynecology Room,Nurse,1
+02/01/2020 03:51,152,AIO006,Death,Death,None,None
+02/01/2020 03:52,186,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 03:54,168,CNS002,Lumbar puncture,Polytrauma Box,ER Doctor Senior,1
+02/01/2020 03:54,136,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,0
+02/01/2020 03:54,154,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,2
+02/01/2020 03:58,159,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,3
+02/01/2020 04:03,168,MAM007,Electrocardiogram (ECG),Polytrauma Box,ER Doctor Junior,0
+02/01/2020 04:06,162,ADM019,Potential COVID-19 therapies,Mid Stay Box,ER Doctor Junior,5
+02/01/2020 04:06,187,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 04:09,172,ADM014,Regional anesthesia,Polytrauma Box,ER Doctor Senior,0
+02/01/2020 04:13,186,AIO002,Nurse clinical evaluation,Triage Room,Nurse,1
+02/01/2020 04:14,188,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 04:14,168,IMG008,Ultrasonography,Polytrauma Box,Radiologist Doctor,0
+02/01/2020 04:17,189,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 04:19,136,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,0
+02/01/2020 04:22,168,AIO001,Medical clinical evaluation,Polytrauma Box,ER Doctor Junior,1
+02/01/2020 04:25,159,AIO007,Discharge,Discharge and LWBS,None,None
+02/01/2020 04:26,187,AIO002,Nurse clinical evaluation,Triage Room,Nurse,0
+02/01/2020 04:28,185,AIO001,Medical clinical evaluation,Mid Stay Box,ER Doctor Junior,0
+02/01/2020 04:30,97,CNS002,Lumbar puncture,Gynecology Room,ER Doctor Senior,0
+02/01/2020 04:33,54,MAM007,Electrocardiogram (ECG),Surgery,ER Doctor Senior,1
+02/01/2020 04:35,186,AIO005,Hospitalization,Hospital Ward,None,None
+02/01/2020 04:36,172,AIO002,Nurse clinical evaluation,Polytrauma Box,Nurse,2
+02/01/2020 04:36,190,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 04:36,188,AIO001,Medical clinical evaluation,ER Box,ER Doctor Junior,2
+02/01/2020 04:40,185,ADM010,Vaccinations,Mid Stay Box,Nurse,1
+02/01/2020 04:42,191,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 04:44,192,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 04:45,172,MAM007,Electrocardiogram (ECG),Polytrauma Box,ER Doctor Junior,2
+02/01/2020 04:49,136,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+02/01/2020 04:50,97,OTR004,Isolation procedures,Gynecology Room,Nurse,3
+02/01/2020 04:52,136,ADM021,"Administration of therapeutic substances, NEC",Clinic Room,Nurse,2
+02/01/2020 04:52,192,AIO007,Discharge,Discharge and LWBS,None,None
+02/01/2020 04:56,187,OTR004,Isolation procedures,Triage Room,Nurse,0
+02/01/2020 04:56,158,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+02/01/2020 04:57,168,RES003,Thoracentesis (diagnostic),Polytrauma Box,ER Doctor Junior,1
+02/01/2020 04:57,194,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 04:58,54,OTR004,Isolation procedures,Surgery,ER Doctor Junior,0
+02/01/2020 04:58,185,ADM020,"Administration of diagnostic substances, NEC",Mid Stay Box,Nurse,1
+02/01/2020 05:02,172,CNS002,Lumbar puncture,Polytrauma Box,ER Doctor Junior,2
+02/01/2020 05:03,172,IMG009,Plain radiography,Polytrauma Box,Radiologist Doctor,0
+02/01/2020 05:05,154,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,1
+02/01/2020 05:05,168,AIO001,Medical clinical evaluation,Polytrauma Box,ER Doctor Junior,1
+02/01/2020 05:06,193,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 05:07,136,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,3
+02/01/2020 05:11,54,ADM020,"Administration of diagnostic substances, NEC",Surgery,Nurse,1
+02/01/2020 05:13,185,ADM010,Vaccinations,Mid Stay Box,Nurse,2
+02/01/2020 05:13,187,AIO005,Hospitalization,Hospital Ward,None,None
+02/01/2020 05:15,97,ADM010,Vaccinations,Gynecology Room,Nurse,3
+02/01/2020 05:15,196,AIO004,Registration,Waiting Room,Administrative Assistant,0
+02/01/2020 05:18,162,GIS006,Paracentesis,Mid Stay Box,ER Doctor Senior,1
+02/01/2020 05:19,195,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 05:20,198,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 05:21,161,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Senior,0
+02/01/2020 05:21,199,AIO004,Registration,Waiting Room,Administrative Assistant,1
+02/01/2020 05:22,162,ESA006,Cardioversion,Mid Stay Box,ER Doctor Senior,0
+02/01/2020 05:24,158,ADM020,"Administration of diagnostic substances, NEC",Clinic Room,Nurse,0
+02/01/2020 05:24,191,AIO007,Discharge,Discharge and LWBS,None,None
+02/01/2020 05:27,161,MAM007,Electrocardiogram (ECG),Clinic Room,ER Doctor Junior,3
+02/01/2020 05:31,54,SKB010,"Skin and breast procedures, NEC",Surgery,ER Doctor Junior,2
+02/01/2020 05:32,164,AIO001,Medical clinical evaluation,Clinic Room,ER Doctor Junior,1
