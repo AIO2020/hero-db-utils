@@ -159,20 +159,18 @@ class DBQuery:
         """
         Sets the FROM statement with a JOIN query.
 
-        Arguments
-        ---------
-            `table_name` <str>
-                Name of the table to join
-
-            `on` <dict>|<queries.QueryOperation>
-                If dictionary then the JOIN will be applied
-                as key=value joined by an 'AND' if more than one key.
-                If a QueryOperation it's value will be used.
-
-            `how` <str>
-                Type of JOIN to use. Defaults to INNER.
-                Accepts:
-                    'RIGHT'['OUTER'],'LEFT'['OUTER'],'FULL'['OUTER'],'INNER'.
+        Parameters
+        ----------
+        `table_name` <str>
+            Name of the table to join
+        `on` <dict>|<queries.QueryOperation>
+            If dictionary then the JOIN will be applied
+            as key=value joined by an 'AND' if more than one key.
+            If a QueryOperation it's value will be used.
+        `how` <str>
+            Type of JOIN to use. Defaults to INNER.
+            Accepts:
+                'RIGHT'['OUTER'],'LEFT'['OUTER'],'FULL'['OUTER'],'INNER'.
         """
         how_values = [
             "RIGHT",
@@ -187,7 +185,11 @@ class DBQuery:
             raise ValueError(f"Value of how '{how.upper()}' is not an allowed value.")
         if not table_name:
             raise ValueError("table_name argument can't be resolved to False.")
-        table_name = table_name.rstrip()
+        if isinstance(table_name, QueryFunc): # Assume a relation
+            table_id = table_name.value
+        else:
+            table_name = table_name.rstrip()
+            table_id = sql.SQL("{table_name}").format(table_name=sql.Identifier(table_name))
         on_statement = None
         if isinstance(on, dict):
             on_ops = []
@@ -207,7 +209,6 @@ class DBQuery:
             on_statement = sql.SQL(" ON ") + on_statement
         else:
             on_statement = sql.SQL("")
-        table_id = sql.SQL("{table_name}").format(table_name=sql.Identifier(table_name))
         self.__join_clause = (
             sql.SQL(" " + how.upper()) + sql.SQL(" JOIN ") + table_id + on_statement
         )
