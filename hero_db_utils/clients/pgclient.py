@@ -32,6 +32,7 @@ from hero_db_utils.exceptions import (
 )
 from hero_db_utils.engines.postgres import PsycopgDBEngine, dbengine_from_psycopg
 from hero_db_utils.constants import EnvVariablesConf
+from hero_db_utils.queries.postgres.op_builder import QueryFunc
 from hero_db_utils.utils.queries import PostgresQueries as pgqueries
 
 
@@ -328,24 +329,7 @@ class PostgresDatabaseClient(PsycopgDBEngine):
             schemas.append("public")
         if not schemas:
             raise ValueError("You must add at least one schema to the search path.")
-        scr = sql.SQL("SET SEARCH_PATH TO {schemas};").format(
-            schemas=sql.SQL(", ").join(
-                [sql.Identifier(schema_name) for schema_name in schemas]
-            )
-        )
-        with self.connection as conn:
-            isolation_level = conn.isolation_level
-            try:
-                conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-                with conn.cursor() as cursor:
-                    cursor.execute(scr)
-                conn.set_isolation_level(isolation_level)
-            except psycopg2.errors.Error as e:
-                self.connection.rollback()
-                raise HeroDatabaseOperationError(
-                    f"Error adding schemas '{', '.join(schemas)}' to search path.", e
-                ) from e
-            conn.commit()
+        self.set_search_path(schemas)
 
     def delete_database(self, db_name, force=False):
         """
@@ -689,8 +673,8 @@ class PostgresDatabaseClient(PsycopgDBEngine):
 
         Arguments
         ---------
-        `sql_query`: DBQuery
-            SQL Query to run.
+        `sql_query`: str
+            A string representing an SQL Query to run.
         `read_sql_query_kwargs`: Any
             Extra named arguments to pass to the pandas.read_sql_query method.
 
@@ -830,18 +814,18 @@ class PostgresDatabaseClient(PsycopgDBEngine):
 
         Arguments
         ---------
-            `table_name` <int>
-                Name of the table to count the rows.
+        `table_name` <str> | relation
+            Name of the table to count the rows.
 
         Returns
         -------
-            `int`
-                Number of rows in the table.
+        `int`
+            Number of rows in the table.
         """
-        query = sql.SQL("SELECT count(*) FROM {table_name}").format(
-            table_name=sql.Identifier(table_name)
+        res = self.select(
+            table_name, 
+            projection=[QueryFunc.count()]
         )
-        res = self.read_sql_query(query)
         return res["count"][0]
 
     def parse_query(self, query: DBQuery) -> str:

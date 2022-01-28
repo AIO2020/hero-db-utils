@@ -18,16 +18,36 @@ def any_duplicated(l: list) -> bool:
     return False
 
 
+def set_conn_url_params(conn_uri:str, params:dict={}, search_path=[]):
+    if not params and not search_path:
+        return conn_uri
+    splt_params = conn_uri.split("?")
+    if len(splt_params)>1:
+        conn_uri, existing_params_str = conn_uri.split("?")
+        existing_params_lst = existing_params_str.split("&")
+        existing_params = {
+            val[0]:val[1] for val in
+            map(lambda v:v.split("="), existing_params_lst)
+        }
+        existing_params.update(params)
+        params = existing_params
+    if search_path :
+        search_path_str = f"-csearch_path%3D" + ",".join(search_path)
+        params["options"] = search_path_str
+    params_str = "&".join([f"{key}={value}" for key,value in params.items()])
+    conn_uri = (conn_uri + "?" + params_str)
+    return conn_uri
+
 def get_connection_url(
-    db_name, db_user, db_psw, db_port, db_host, engine, **params
+    db_name, db_user, db_psw, db_port, db_host, engine, search_path=[], **params
 ):
     db_name = quote_plus(db_name.encode() if isinstance(db_name, str) else db_name)
     db_user = quote_plus(db_user.encode() if isinstance(db_user, str) else db_user)
     db_psw = quote_plus(db_psw.encode() if isinstance(db_psw, str) else db_psw)
     engine = quote_plus(engine.encode() if isinstance(engine, str) else engine)
-    params_str = "&".join([f"{key}={value}" for key,value in params.items()])
     conn_uri =  f"{engine}://{db_user}:{db_psw}@{db_host}:{db_port}/{db_name}"
-    conn_uri = conn_uri + "?" + params_str if params_str else conn_uri
+    if params or search_path:
+        conn_uri = set_conn_url_params(conn_uri, params, search_path=search_path)
     return conn_uri
 
 def objs_to_dicts(l_objs: list) -> list:
