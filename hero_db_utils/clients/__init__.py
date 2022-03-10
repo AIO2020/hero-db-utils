@@ -1,1 +1,1 @@
-from .pgclient import PostgresDatabaseClient
+from .postgres import PostgresDatabaseClient

@@ -34,9 +34,10 @@ from hero_db_utils.engines.postgres import PsycopgDBEngine, dbengine_from_psycop
 from hero_db_utils.constants import EnvVariablesConf
 from hero_db_utils.queries.postgres.op_builder import QueryFunc
 from hero_db_utils.utils.queries import PostgresQueries as pgqueries
+from hero_db_utils.utils.utils import get_env_params
+from hero_db_utils.clients._base import SQLBaseClient
 
-
-class PostgresDatabaseClient(PsycopgDBEngine):
+class PostgresDatabaseClient(SQLBaseClient, PsycopgDBEngine):
     """
     Postgresql Database client using the psycopg2 engine.
     Contains useful methods to read/write into a postgres database
@@ -130,83 +131,10 @@ class PostgresDatabaseClient(PsycopgDBEngine):
         `dict`
             Dictionary of kwargs that can be passed as a mappable to the class constructor.
         """
-        return {
-            "db_name": os.environ.get(
-                EnvVariablesConf.Postgres.KEY_NAMES["DBNAME"],
-                EnvVariablesConf.Postgres.DEFAULT_VALUES.get("DBNAME"),
-            ),
-            "db_username": os.environ.get(
-                EnvVariablesConf.Postgres.KEY_NAMES["DBUSER"],
-                EnvVariablesConf.Postgres.DEFAULT_VALUES.get("DBUSER"),
-            ),
-            "db_password": os.environ.get(
-                EnvVariablesConf.Postgres.KEY_NAMES["DBPASSWORD"],
-                EnvVariablesConf.Postgres.DEFAULT_VALUES.get("DBPASSWORD"),
-            ),
-            "db_host": os.environ.get(
-                EnvVariablesConf.Postgres.KEY_NAMES["DBHOST"],
-                EnvVariablesConf.Postgres.DEFAULT_VALUES.get("DBHOST"),
-            ),
-            "db_port": os.environ.get(
-                EnvVariablesConf.Postgres.KEY_NAMES["DBPORT"],
-                EnvVariablesConf.Postgres.DEFAULT_VALUES.get("DBPORT"),
-            ),
-        }
-
-    @staticmethod
-    def get_params_from_settings(db_profile: str = None, db_settings: dict = None):
-        """
-        Gets the paramaters to initiate an instance of the class from the
-        django project's settings.py 'DATABASES' attribute [1] or a dictionary with settings.
-
-        Parameters
-        ----------
-        `db_profile`: str
-            Name of the key with the configuration of the database to use. Example: 'default'.
-        `db_settings`: dict
-            Optional dictionary with key-value pairs of the database configuration
-            required to connect to it. Corresponds with the values of the inner dictionaries
-            of django's DATABASES settings.
-            Use this if you want get the parameters of a database not specified in settings.py.
-            `db_profile` takes precedence if it is also defined when calling the method.
-
-        Returns
-        -------
-        `dict`
-            Dictionary of kwargs that can be passes as a mappable to the class constructor.
-
-        Raises
-        ------
-        `ValueError`
-            If no params were defined when calling this method.
-        `KeyError`
-            If the name given in 'db_profile' is not a key in the project
-            settings' DATABASES attribute.
-
-        References
-        --------
-        [1] https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-        """
-        if db_profile is not None:
-            from django.conf import settings
-
-            db_config = settings.DATABASES[db_profile]
-            return {
-                "db_name": db_config["NAME"],
-                "db_username": db_config.get("USER"),
-                "db_password": db_config.get("PASSWORD"),
-                "db_host": db_config.get("HOST"),
-                "db_port": db_config.get("PORT"),
-            }
-        elif db_settings is not None:
-            return {
-                "db_name": db_settings["NAME"],
-                "db_username": db_settings.get("USER"),
-                "db_password": db_settings.get("PASSWORD"),
-                "db_host": db_settings.get("HOST"),
-                "db_port": db_settings.get("PORT"),
-            }
-        raise ValueError("You must specify a parameter db_profile or db_settings.")
+        params = get_env_params("postgres")
+        if "db_engine" in params:
+            del params["db_engine"]
+        return params
 
     def create_database(self, db_name: str = None, raise_duplicated: bool = True):
         """

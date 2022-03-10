@@ -1,4 +1,3 @@
-import datetime as dt
 
 
 class EnvVariablesConf:
@@ -10,6 +9,18 @@ class EnvVariablesConf:
     TEST_DATABASE_NAME_KEY = "HERO_TEST_DATABASE_NAME"
     TEST_DATABASE_NAME_DEFAULT = "_hero_testing_db"
 
+    KEY_NAMES = {
+        "DBENGINE":"HERO_DATABASE_ENGINE",
+        "DBNAME": "HERO_DATABASE_NAME",
+        "DBUSER": "HERO_DATABASE_USERNAME",
+        "DBPASSWORD": "HERO_DATABASE_PASSWORD",
+        "DBHOST": "HERO_DATABASE_HOST",
+        "DBPORT": "HERO_DATABASE_PORT",
+    }
+    DEFAULT_VALUES = {
+        "DBENGINE":"postgres"
+    }
+
     class Postgres:
 
         KEY_NAMES = {
@@ -19,13 +30,14 @@ class EnvVariablesConf:
             "DBHOST": "HERO_POSTGRES_HOST",
             "DBPORT": "HERO_POSTGRES_PORT",
         }
-
         DEFAULT_VALUES = {"DBUSER": "postgres", "DBHOST": "localhost", "DBPORT": "5432"}
 
 
 class DataTypes:
+    import datetime as dt
+    import io
 
-    PG_DATA_TYPES_MAP = {
+    _default_ = {
         "integer": int,
         "bigint": int,
         "smallint": int,
@@ -37,8 +49,8 @@ class DataTypes:
         "timestamp": dt.datetime,
         "date": dt.date,
         "time": dt.time,
-        "interval": dt.datetime,
+        "interval": dt.timedelta,
         "boolean": bool,
         "binary": bytes,
-        "file": bytes,
+        "file": io.FileIO,
     }

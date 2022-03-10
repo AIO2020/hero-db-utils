@@ -3,9 +3,12 @@ Database utils
 """
 
 import collections
+import os
 from urllib.parse import quote_plus
 import string
 import random
+
+from hero_db_utils.constants import EnvVariablesConf
 
 
 def any_duplicated(l: list) -> bool:
@@ -144,3 +147,40 @@ def add_db_args(
         default=None if not default_host else default_host,
         required=False if default_host else True,
     )
+
+def get_env_params(engine=None):
+    """
+    Retrieves the present environment variables
+    that can be used to configure the database connection.
+    """
+    conf = EnvVariablesConf
+    env_db_engine = os.environ.get(
+        conf.KEY_NAMES["DBENGINE"],
+        conf.DEFAULT_VALUES["DBENGINE"],
+    )
+    engine = engine or env_db_engine
+    if engine == "postgres":
+        conf = EnvVariablesConf.Postgres
+    return {
+        "db_engine":engine,
+        "db_name": os.environ.get(
+            conf.KEY_NAMES["DBNAME"],
+            conf.DEFAULT_VALUES.get("DBNAME"),
+        ),
+        "db_username": os.environ.get(
+            conf.KEY_NAMES["DBUSER"],
+            conf.DEFAULT_VALUES.get("DBUSER"),
+        ),
+        "db_password": os.environ.get(
+            conf.KEY_NAMES["DBPASSWORD"],
+            conf.DEFAULT_VALUES.get("DBPASSWORD"),
+        ),
+        "db_host": os.environ.get(
+            conf.KEY_NAMES["DBHOST"],
+            conf.DEFAULT_VALUES.get("DBHOST"),
+        ),
+        "db_port": os.environ.get(
+            conf.KEY_NAMES["DBPORT"],
+            conf.DEFAULT_VALUES.get("DBPORT"),
+        )
+    }
