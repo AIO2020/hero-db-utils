@@ -9,3 +9,14 @@ class FieldsValidationError(Exception):
     """
     pass
 
+class UnexpectedQueryResult(Exception):
+    """
+    Exception for unexpected database results.
+    """
+    pass
+
+class NoResultsError(UnexpectedQueryResult):
+    """
+    Exception when results from a query were expected
+    but none were found.
+    """

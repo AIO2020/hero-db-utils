@@ -3,8 +3,10 @@ from dataclasses import _MISSING_TYPE
 import typing as tp
 import pandas as pd
 from hero_db_utils.clients._base import SQLBaseClient
-from hero_db_utils.datamodels.exceptions import FieldsValidationError
+import hero_db_utils.datamodels.exceptions as errors
+from hero_db_utils.datamodels.fields import AutoSerialField
 from hero_db_utils.datamodels.sources import get_db_client
+from hero_db_utils.queries.postgres.op_builder import QueryFunc
 
 from hero_db_utils.utils.functional import classproperty
 from dataclasses import dataclass
@@ -69,6 +71,16 @@ class DataModel(abc.ABC):
             if not isinstance(field.default,_MISSING_TYPE):
                 fields[key]['default'] = field.default
         return fields
+    
+    @classproperty
+    def writable_fields(cls):
+        """
+        Retrieves the fields that can be written over.
+        """
+        return {
+            key:field for key, field in cls.fields.items()
+            if not isinstance(field["type"], AutoSerialField)
+        }
 
     @property
     def data(self) -> pd.Series:
@@ -89,7 +101,7 @@ class DataModel(abc.ABC):
         try:
             dvalue = dtype(value)
         except Exception as e:
-            raise FieldsValidationError(
+            raise errors.FieldsValidationError(
                 f"Error parsing field '{fieldname}' as type '{dtype.__name__}' using value '{value}'"
             ) from e
         return dvalue
@@ -133,19 +145,82 @@ class DataModel(abc.ABC):
         self.validate()
 
     @classmethod
-    def objects(cls, source=None):
-        if source is None:
-            source = get_db_client()
-        if not source:
-            raise ValueError(
-                "Coult not find a valid source to search "
-                "for data model objects."
-            )
-        return DataObjectsManager(cls, source)
+    def objects(cls, source=None, source_type=None):
+        return DataObjectsManager(cls, source, source_type)
+
+    @classmethod
+    def collection(cls, models=[]):
+        return DataModelsCollection(cls, models)
+
+    def save(self, source=None):
+        return self.objects().save(self)
 
     class Meta:
         db_table:str = None
 
+class DataModelsCollection():
+    """
+    Represents a collection of data models
+    that can be represented as a pandas dataframe.
+    """
+    
+    def __init__(self, model_cls:tp.Type[DataModel], data:tp.List[dict]=[]):
+        self._rows = []
+        if isinstance(data, pd.DataFrame):
+            self._rows = [
+                model_cls(**kwargs)
+                for kwargs in data.to_dict(orient='records')
+            ]
+        if data and not isinstance(data[0], model_cls):
+            for d in data:
+                self._rows.append(model_cls(**d))
+        elif data:
+            assert all(isinstance(d, model_cls) for d in data), (
+                "All members must be of the same class "
+                f"('{model_cls.__name__}')"
+            )
+            self._rows = data.copy()
+        self._model_cls = model_cls
+    
+    def __repr__(self):
+        return str(self)
+
+    def __str__(self):
+        return (
+            f"<{self.model_cls.__name__}> Collection({self.size})"
+        )
+
+    @property
+    def raw(self):
+        return self._rows
+
+    @property
+    def size(self):
+        return len(self._rows)
+
+    @property
+    def model_cls(self):
+        return self._model_cls
+
+    def asdf(self, all_cols=False) -> pd.DataFrame:
+        """
+        Transforms a list of member of the fields class or list of dicts (kwargs) into
+        a pandas dataframe compatible for this fields class.
+        """
+        cols = list(self.model_cls.fields) if not all_cols else list(self.model_cls.fields)
+        return pd.DataFrame(
+            map(lambda o: getattr(o, 'data')[cols], self.raw),
+            columns=cols
+        )
+
+    def save(self, **kwargs):
+        return self.model_cls.objects().save(self, **kwargs)
+    
+    def __getitem__(self, idx):
+        return self._rows[idx]
+    
+    def __len__(self):
+        return self.size
 
 class DataObjectsManager:
     """
@@ -154,13 +229,25 @@ class DataObjectsManager:
     Using a given source.
     """
     
-    def __init__(self, model_cls, source):
+    #TODO: Support other data sources, like json, csv, etc.
+    _ALLOWED_SOURCES = ["sql"]
+    
+    def __init__(self, model_cls, source=None, source_type=None):
+        if source is None:
+            source = get_db_client()
+        if not source:
+            raise ValueError(
+                "No valid source to search "
+                "for data model objects."
+            )
         self._model_cls = model_cls
         if isinstance(source, SQLBaseClient):
             self._source = source
             self.source_type = "sql"
         else:
-            raise TypeError(f"Manager does not support sources of type '{type(source)}'")
+            self.source_type = source_type
+            self._source = source
+        self._limit = None
 
     @property
     def model_cls(self) -> tp.Type[DataModel]:
@@ -176,9 +263,8 @@ class DataObjectsManager:
     
     @source_type.setter
     def source_type(self, value):
-        allowed_values = ["sql"]
-        if value not in allowed_values:
-            raise ValueError("source type is not an allowd value")
+        if value not in self._ALLOWED_SOURCES:
+            raise ValueError(f"source type '{value}' is not supported.")
         self._source_type = value
 
     def only(self, n:int=None):
@@ -192,57 +278,107 @@ class DataObjectsManager:
     def all(self):
         if self.source_type == "sql":
             return self.connection.select(self.model_cls.dbtable)
-
-    def save(self, model):
-        """
-        Saves a new record of this data model
-        in the data source.
-        """
-        if not isinstance(model, self.model_cls):
-            raise TypeError("This manager does not support this model class")
-        #TODO: Finish implementing 
-
-class DataModelsCollection():
-    """
-    Represents a collection of data models
-    that can be represented as a pandas dataframe.
-    """
     
-    def __init__(self, data_cls:tp.Type[DataModel], data=tp.List[dict]):
-        self._rows = []
-        if isinstance(data, pd.DataFrame):
-            self._rows = [
-                data_cls(**kwargs)
-                for kwargs in data.to_dict(orient='records')
-            ]
-        for d in data:
-            if not isinstance(d, data_cls):
-                self._rows.append(data_cls(**d).data)
-            else:
-                self._rows.append(d)
-        self._data_cls = data_cls
-
-    @property
-    def raw(self):
-        return self._rows
-
-    @property
-    def size(self):
-        return len(self._rows)
-
-    @property
-    def data_cls(self):
-        return self._data_cls
-
-    def asdf(self) -> pd.DataFrame:
+    def filter(self, **kwargs):
         """
-        Transforms a list of member of the fields class or list of dicts (kwargs) into
-        a pandas dataframe compatible for this fields class.
+        Retrieves the records in the data source
+        that match the parameters specified.
         """
-        return pd.DataFrame(
-            [row.data for row in self._rows],
-            columns=list(self.data_cls.fields())
-        )
+        if not kwargs:
+            raise ValueError(
+                "No parameters to filter were given"
+            )
+        if self.source_type == "sql":
+            results = self.connection.select(
+                self.model_cls.dbtable,
+                projection=list(self.model_cls.fields),
+                filters=kwargs,
+                limit=self._limit
+            )
+        if self._limit is None:
+            self._limit = None
+        return results
+    
+    def count(self, **kwargs):
+        """
+        Count the number of records that match
+        a criteria (All records by default).
+        """
+        if self.source_type == "sql":
+            results = self.connection.select(
+                self.model_cls.dbtable,
+                projection=[QueryFunc.count(alias="count")],
+                filters=kwargs
+            )
+            count = results["count"][0]
+        return count
+
+    def get(self, **kwargs):
+        """
+        Retrieves one object in the data source that matches
+        the parameters given or fails.
+        """
+        self._limit = 2
+        results = self.filter(**kwargs)
+        if results.empty:
+            raise errors.NoResultsError(
+                "No object matches the filters specified"
+            )
+        if len(results.index) > 1:
+            raise errors.UnexpectedQueryResult(
+                f"Got more than one result for this query"
+            )
+        result = results.iloc[0]
+        return  self.model_cls(**result)
+
+    def get_or_create(self, **kwargs):
+        """
+        Creates a new objects in the data source
+        that matches the parameters given if a similar one
+        does not exists in the data source already, otherwise
+        retrieves the existing one.
+        
+        Returns
+        -------
+        `tuple (model, created)`
+            - `model`:DataModel:
+                An object in the data source matching the parameters given
+            - `created`:boolean:
+                True if the object was created in the data source,
+                False if it was just retrieved.
+        """
+        created = False
+        try:
+            model = self.get(**kwargs)
+        except errors.NoResultsError:
+            pass
+        model = self.model_cls(**kwargs)
+        self.save(model)
+        created = True
+        return model, created
+
+    def save(self, instance:tp.Union[DataModel, DataModelsCollection], **kwargs):
+        """
+        Saves a new record of this data model in the data source.
+        """
+        if isinstance(instance, DataModel):
+            if not isinstance(instance, self.model_cls):
+                raise TypeError("This manager does not support this model class")
+            table = pd.DataFrame([instance.data])
+            table_name = instance.dbtable
+        elif isinstance(instance, DataModelsCollection):
+            if not instance.model_cls == self.model_cls:
+                raise TypeError("This manager does not support this model class")
+            table = instance.asdf()
+            table_name = instance.model_cls.dbtable
+        if self.source_type == "sql":
+            kwargs["chunksize"] = kwargs.get("chunksize", 1000)
+            self.connection.insert_from_df(
+                table[list(self.model_cls.writable_fields)], table_name,
+                if_exists="append",
+                index=False,
+                **kwargs
+            )
 
 class DataModelDescriber():
 

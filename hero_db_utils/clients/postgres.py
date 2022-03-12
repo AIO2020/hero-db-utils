@@ -350,7 +350,7 @@ class PostgresDatabaseClient(SQLBaseClient, PsycopgDBEngine):
         exists_behavior = "append" if append else "replace" if drop else "fail"
         params = {}
         params["index"] = False
-        params["if_exists"] = exists_behavior
+        params["if_exists"] = params.get("if_exists", exists_behavior)
         params.update(**to_sql_kwargs)
         params["name"] = table_name
         client = dbengine_from_psycopg(self)

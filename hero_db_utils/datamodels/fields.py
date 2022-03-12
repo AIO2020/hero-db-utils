@@ -86,3 +86,13 @@ class ListTextValuesField:
             raise ValueError("No values were passed to the list")
         vals = pd.Series(vals).str.strip()
         return ",".join(vals)
+
+class AutoSerialField:
+    """
+    Represents a field that
+    the data models can ignore
+    since it is handled by the data source.
+    """
+    
+    def __call__(self, value):
+        return value
