@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 
 from hero_db_utils.datamodels import DataModel
+from hero_db_utils.datamodels.models import DataModelsCollection
 from hero_db_utils.utils.functional import classproperty
 
 import utils
@@ -30,7 +31,8 @@ class DataModelLoader(metaclass=ABCMeta):
     def __init__(
         self,
         table:pd.DataFrame=pd.DataFrame(),
-        log_loaded=False
+        log_loaded=False,
+        connection_params={}
     ):
         """
         Initiates an object capable of loading from the source
@@ -50,6 +52,7 @@ class DataModelLoader(metaclass=ABCMeta):
         self._input_data:pd.DataFrame = table.copy()
         self._log_loaded = log_loaded
         self._loaded_data = pd.DataFrame()
+        self._connection_params = connection_params
 
     @property
     def dataclass(self) -> tp.Type[DataModel]:
@@ -109,7 +112,8 @@ class DataModelLoader(metaclass=ABCMeta):
         map_func:tp.Callable[[tp.Type[DataModelLoader], pd.Series, tp.Type[DataModel]]]=None,
         input_data:pd.DataFrame=None,
         get_output:bool=False,
-        bulk_create:bool=False
+        bulk_create:bool=False,
+        **save_kwargs
     ) -> tp.Union[pd.DataFrame, None]:
         """
         Loads the information of a dataframe of a field class' to
@@ -129,7 +133,8 @@ class DataModelLoader(metaclass=ABCMeta):
         `bulk_create`:bool. Defaults to False.
             If True a bulk create will be performed on all the objects returned
             by `_load_item` after all the rows of the input data have been exhausted.
-
+        `**save_kwargs`: Named arguments
+            Named arguments to pass to the DataObjectsManager.save method.
         Returns
         -------
             `pd.DataFrame` | `None`
@@ -137,6 +142,8 @@ class DataModelLoader(metaclass=ABCMeta):
                information about the table created in the database,
                otherwise returns None.
         """
+        if self._connection_params and not save_kwargs.get("source_kwargs"):
+            save_kwargs["source_kwargs"] = self._connection_params
         self.preload()
         input_data = input_data.copy() if input_data is not None else self._input_data
         logging.info(f"Loading '{len(input_data.index)}' records to the database")
@@ -148,28 +155,32 @@ class DataModelLoader(metaclass=ABCMeta):
             item_resp = self._load_item(row.Index, row)
             if item_resp is None:
                 continue
-            model_instance, created = item_resp
+            model_instance, _ = item_resp
             if map_func:
                 map_func(self, row, model_instance)
-                model_instance.save()
+            if not bulk_create:
+                model_instance.save(**save_kwargs)
             if retrieve_out_data:
-                model_ser = utils.series_from_model(model_instance, keep_object=True)
-                model_ser["_created"] = created
-                created_items.append(model_ser)
+                created_items.append(model_instance.data)
         if retrieve_out_data:
             out_data = pd.DataFrame(created_items)
         if bulk_create:
-            self.make_bulk_create(out_data["_obj"].to_list())
+            self.make_bulk_create(out_data, **save_kwargs)
         if self._log_loaded:
             self._loaded_data = pd.concat([self._loaded_data, out_data], ignore_index=True)
         if get_output:
             return out_data
         return None
 
-    def make_bulk_create(self, objects, model_cls:DataModel=None):
-        if not model_cls:
-            model_cls = type(objects[0])
-        model_cls.objects.bulk_create(objects, batch_size=30000)
+    def make_bulk_create(self, objects, **save_kwargs):
+        collection = DataModelsCollection(
+            self.dataclass,
+        )
+        collection._rows = objects
+        collection.save(
+            objects,
+            **save_kwargs
+        )
 
     def load_parallelly(
         self,

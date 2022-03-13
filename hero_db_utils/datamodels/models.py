@@ -152,8 +152,8 @@ class DataModel(abc.ABC):
     def collection(cls, models=[]):
         return DataModelsCollection(cls, models)
 
-    def save(self, source=None):
-        return self.objects().save(self)
+    def save(self, source_kwargs={}, **kwargs):
+        return self.objects(**source_kwargs).save(self, **kwargs)
 
     class Meta:
         db_table:str = None
@@ -213,8 +213,8 @@ class DataModelsCollection():
             columns=cols
         )
 
-    def save(self, **kwargs):
-        return self.model_cls.objects().save(self, **kwargs)
+    def save(self, source_kwargs={}, **kwargs):
+        return self.model_cls.objects(**source_kwargs).save(self, **kwargs)
     
     def __getitem__(self, idx):
         return self._rows[idx]
@@ -397,7 +397,7 @@ class DataObjectsManager:
         created = True
         return model, created
 
-    def save(self, instance:tp.Union[DataModel, DataModelsCollection], **kwargs):
+    def save(self, instance:tp.Union[DataModel, DataModelsCollection], batch_size=1000, **kwargs):
         """
         Saves a new record of this data model in the data source.
         """
@@ -412,7 +412,7 @@ class DataObjectsManager:
             table = instance.asdf()
             table_name = instance.model_cls.dbtable
         if self.source_type == "sql":
-            kwargs["chunksize"] = kwargs.get("chunksize", 1000)
+            kwargs["chunksize"] = batch_size
             self.connection.insert_from_df(
                 table[list(self.model_cls.writable_fields)], table_name,
                 if_exists="append",
