@@ -161,57 +161,82 @@ class DBQuery:
 
         Parameters
         ----------
-        `table_name` <str>
-            Name of the table to join
-        `on` <dict>|<queries.QueryOperation>
+        `table_name` <str>|<list>
+            Name of the table to join or list of multiple tables
+        `on` <dict>|<queries.QueryOperation>|<list>
             If dictionary then the JOIN will be applied
             as key=value joined by an 'AND' if more than one key.
             If a QueryOperation it's value will be used.
-        `how` <str>
+            If multiple tables are to be joined then a list of dictionaries
+            or QueryOperation objects.
+        `how` <str>|<list>
             Type of JOIN to use. Defaults to INNER.
+            Can also accepts a list to match with the number of tables to join.
             Accepts:
                 'RIGHT'['OUTER'],'LEFT'['OUTER'],'FULL'['OUTER'],'INNER'.
         """
-        how_values = [
-            "RIGHT",
-            "LEFT",
-            "FULL",
-            "RIGHT OUTER",
-            "LEFT OUTER",
-            "FULL OUTER",
-            "INNER",
-        ]
-        if not how.upper() in how_values:
-            raise ValueError(f"Value of how '{how.upper()}' is not an allowed value.")
-        if not table_name:
-            raise ValueError("table_name argument can't be resolved to False.")
-        if isinstance(table_name, QueryFunc): # Assume a relation
-            table_id = table_name.value
+        self.__join_clause = sql.SQL("")
+        if isinstance(table_name, str):
+            table_names = [table_name]
+            hows = [how]
+            ons = [on]
         else:
-            table_name = table_name.rstrip()
-            table_id = sql.SQL("{table_name}").format(table_name=sql.Identifier(table_name))
-        on_statement = None
-        if isinstance(on, dict):
-            on_ops = []
-            for key, value in on.items():
-                resolved_op = QueryOp.equals(value).resolve(key)
-                on_ops.append(resolved_op)
-            on = QueryOperation.q_and(*on_ops)
-        if isinstance(on, QueryOperation):
-            op_data = on.to_dict()
-            on_statement = op_data["operation"]
-            self.__query_params.update(op_data["params"])
-        else:
-            raise TypeError(
-                f"Error, type of argument 'on' was not resolved. Got {type(on)}"
+            table_names = table_name.copy()
+            ons = on
+            if isinstance(how, str):
+                hows = [how]*len(table_name)
+            else:
+                hows = how.copy()
+                if len(hows)!=len(table_names):
+                    raise ValueError("Length of 'how' statement must be equal to length of table_name")
+            if not isinstance(ons, list):
+                raise TypeError("on must be a list when table_name is not a string")
+            elif len(ons) != len(table_names):
+                raise ValueError("length of 'on' statement must be equal to length of table_name when list is passed")
+        for table_idx in range(len(table_names)):
+            how = hows[table_idx]
+            table_name = table_names[table_idx]
+            on = ons[table_idx]
+            how_values = [
+                "RIGHT",
+                "LEFT",
+                "FULL",
+                "RIGHT OUTER",
+                "LEFT OUTER",
+                "FULL OUTER",
+                "INNER",
+            ]
+            if not how.upper() in how_values:
+                raise ValueError(f"Value of how '{how.upper()}' is not an allowed value.")
+            if not table_name:
+                raise ValueError("table_name argument can't be resolved to False.")
+            if isinstance(table_name, QueryFunc): # Assume a relation
+                table_id = table_name.value
+            else:
+                table_name = table_name.rstrip()
+                table_id = sql.SQL("{table_name}").format(table_name=sql.Identifier(table_name))
+            on_statement = None
+            if isinstance(on, dict):
+                on_ops = []
+                for key, value in on.items():
+                    resolved_op = QueryOp.equals(value).resolve(key)
+                    on_ops.append(resolved_op)
+                on = QueryOperation.q_and(*on_ops)
+            if isinstance(on, QueryOperation):
+                op_data = on.to_dict()
+                on_statement = op_data["operation"]
+                self.__query_params.update(op_data["params"])
+            else:
+                raise TypeError(
+                    f"Error, type of argument 'on' was not resolved. Got {type(on)}"
+                )
+            if on_statement:
+                on_statement = sql.SQL(" ON ") + on_statement
+            else:
+                on_statement = sql.SQL("")
+            self.__join_clause += (
+                sql.SQL(" " + how.upper()) + sql.SQL(" JOIN ") + table_id + on_statement
             )
-        if on_statement:
-            on_statement = sql.SQL(" ON ") + on_statement
-        else:
-            on_statement = sql.SQL("")
-        self.__join_clause = (
-            sql.SQL(" " + how.upper()) + sql.SQL(" JOIN ") + table_id + on_statement
-        )
         return self
 
     def where(self, filter, filter_mappings={}, join_or=False):

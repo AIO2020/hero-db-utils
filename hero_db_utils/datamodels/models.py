@@ -4,7 +4,7 @@ import typing as tp
 import pandas as pd
 from hero_db_utils.clients._base import SQLBaseClient
 import hero_db_utils.datamodels.exceptions as errors
-from hero_db_utils.datamodels.fields import AutoSerialField
+from hero_db_utils.datamodels.fields import _read_only_fields, _relational_fields
 from hero_db_utils.datamodels.sources import get_db_client
 from hero_db_utils.queries.postgres.op_builder import QueryFunc
 
@@ -79,7 +79,7 @@ class DataModel(abc.ABC):
         """
         return {
             key:field for key, field in cls.fields.items()
-            if not isinstance(field["type"], AutoSerialField)
+            if not isinstance(field["type"], _read_only_fields)
         }
 
     @property
@@ -312,6 +312,46 @@ class DataObjectsManager:
             )
             count = results["count"][0]
         return count
+    
+    def fetch_related(self, *fields, join_how="left"):
+        """
+        Retrieves the information of the fields
+        that have a relation to another data model.
+        On sql, this is equivalent to performing a left join
+        on the tables from the columns that are foreign keys
+        """
+        related_fields = [
+            fieldname for fieldname, field in self.model_cls.fields.items()
+            if isinstance(field["type"], _relational_fields)
+        ]
+        not_related_fields = set(fields) - set(related_fields)
+        if not_related_fields:
+            raise ValueError(
+                f"Fields '{not_related_fields}' are not"
+                "relational data type fields"
+            )
+        if self.source_type == "sql":
+            # Generate join query:
+            join_tables = []
+            join_on = []
+            src_table = self.model_cls.dbtable
+            for rel_field in fields:
+                rel_type = self.model_cls.fields[rel_field]["type"]
+                ref_table = rel_type.ref_table
+                ref_col = rel_type.ref_column
+                join_tables.append(ref_table)
+                join_on.append(
+                    {
+                        QueryFunc.relation(src_table, rel_field):QueryFunc.relation(ref_table, ref_col)
+                    }
+                )
+            results = self.connection.select(
+                self.model_cls.dbtable,
+                join_table=join_tables,
+                join_on=join_on,
+                join_how=join_how
+            )
+        return results
 
     def get(self, **kwargs):
         """
