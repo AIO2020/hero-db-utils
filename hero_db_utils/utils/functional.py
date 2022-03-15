@@ -26,3 +26,14 @@ def classproperty(func):
     if not isinstance(func, (classmethod, staticmethod)):
         func = classmethod(func)
     return _ClassPropertyDescriptor(func)
+
+def is_iter(obj) -> bool:
+    """
+    Checks if an object is iterable by
+    trying to use the iter function on it.
+    """
+    try:
+        iter(obj)
+    except TypeError:
+        return False
+    return True

@@ -1,8 +1,14 @@
 import abc
 import pandas as pd
+import logging
 
 class SQLBaseClient(abc.ABC):
-    
+
+    def get_logger(self) -> logging.Logger:
+        return logging.getLogger(
+            f"hero_db_utils.{self.__class__.__name__}.{self.db_name}"
+        )
+
     @abc.abstractmethod
     def select(*args, **kwargs)  -> pd.DataFrame:
         """

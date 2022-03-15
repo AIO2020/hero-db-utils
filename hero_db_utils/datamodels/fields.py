@@ -161,7 +161,7 @@ class JsonField(BaseField):
         super().__init__(**kwargs)
         self._to_json_kwargs = json_kwargs
 
-    def __call__(self, value):
+    def parse(self, value):
         kwargs = self._to_json_kwargs.copy()
         if isinstance(value, str):
             data = pd.io.json.loads(value)
@@ -181,9 +181,17 @@ class ForeignKeyField(BaseField):
     
     def __init__(self, ref_table, ref_column, **kwargs):
         super().__init__(**kwargs)
-        self._ref_table = ref_table
+        self._ref_model = None
+        self.__init_ref_table(ref_table)
         self._ref_column = ref_column
     
+    def __init_ref_table(self, ref_table):
+        from hero_db_utils.datamodels.models import DataModel
+        if isinstance(ref_table, DataModel):
+            ref_table = ref_table.dbtable
+            self._ref_model = ref_table
+        self._ref_table = ref_table
+
     @property
     def ref_table(self):
         return self._ref_table
@@ -191,6 +199,18 @@ class ForeignKeyField(BaseField):
     @property
     def ref_column(self):
         return self._ref_column
+    
+    @property
+    def ref_model(self):
+        return self._ref_model
+    
+    @property
+    def is_ref_model(self):
+        """
+        Returns true if the reference model
+        is a data model
+        """
+        return self._ref_model is not None
 
     def parse(self, value):
         return value
@@ -200,5 +220,9 @@ _relational_fields = (
 )
 
 _read_only_fields = (
+    AutoSerialField,
+)
+
+_identifier_fields = (
     AutoSerialField,
 )

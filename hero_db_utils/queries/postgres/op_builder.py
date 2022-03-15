@@ -1,7 +1,7 @@
 """
 PostgreSQL query operations generation module.
 """
-from typing import Type
+from typing import Type, Union
 import pandas as pd
 from datetime import datetime
 import numbers
@@ -11,6 +11,7 @@ from psycopg2.extensions import connection
 
 from hero_db_utils.utils import short_random_id
 from hero_db_utils.utils.dtypes import Literal
+from hero_db_utils.utils.functional import is_iter
 
 
 class QueryFunc:
@@ -275,24 +276,16 @@ class QueryOp:
         return QueryOp(queryop, {**params1, **params2})
 
     @staticmethod
-    def value_in(query):
-        from queries.postgres.builder import DBQuery
-
-        if not isinstance(query, DBQuery):
-            raise TypeError("query must be a queries.DBQuery object.")
-        query_attrs = query.to_dict()
-        queryop = sql.SQL("IN ") + query_attrs["query"]
-        return QueryOp(queryop, query_attrs["params"])
+    def value_in(values):
+        query, params = QueryOp._parse_in_query(values)
+        queryop = sql.SQL("IN ") + query
+        return QueryOp(queryop, params)
 
     @staticmethod
-    def value_not_in(query):
-        from queries.postgres.builder import DBQuery
-
-        if not isinstance(query, DBQuery):
-            raise TypeError("query must be a queries.DBQuery object.")
-        query_attrs = query.to_dict()
-        queryop = sql.SQL("NOT IN ") + query_attrs["query"]
-        return QueryOp(queryop, query_attrs["params"])
+    def value_not_in(values):
+        query, params = QueryOp._parse_in_query(values)
+        queryop = sql.SQL("NOT IN ") + query
+        return QueryOp(queryop, params)
 
     @staticmethod
     def not_equals(value):
@@ -332,6 +325,25 @@ class QueryOp:
         value, params = QueryOp._parse_to_sql(value)
         queryop = sql.SQL("NOT ILIKE ") + value
         return QueryOp(queryop, params)
+    
+    @staticmethod
+    def _parse_in_query(values):
+        from hero_db_utils.queries.postgres.builder import DBQuery
+        if isinstance(values, DBQuery):
+            query_attrs = values.to_dict()
+            query = query_attrs["query"]
+            params = query_attrs["params"]
+        elif is_iter(values):
+            params = {}
+            sql_values = []
+            for v in values:
+                val, param = QueryOp._parse_to_sql(v)
+                sql_values.append(val);
+                params.update(param);
+            query = sql.SQL("(") + sql.SQL(",").join(sql_values) + sql.SQL(")")
+        else:
+            raise TypeError("values must be a queries.DBQuery or an iterable.")
+        return query, params
 
 
 class QueryOperation:

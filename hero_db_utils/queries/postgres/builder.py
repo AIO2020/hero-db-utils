@@ -33,6 +33,7 @@ class DBQuery:
         self.__order_clause = None
         self.__offset_clause = None
         self.__limit_clause = None
+        self.__set_statement = None
 
     def to_dict(self) -> dict:
         """
@@ -357,7 +358,7 @@ class DBQuery:
 
     def resolve(self):
         """
-        Resolves the built clauses into a full SQL query.
+        Resolves the built clauses into a full SQL SELECT query.
         """
         assert (
             self.__projection_elements or self.__projection_elements is None
@@ -469,3 +470,38 @@ class DBQuery:
         else:
             operation = QueryOperation.q_and(*ops)
         return operation
+
+    def set(self, values:dict):
+        """
+        Sets the column values for a SET statement.
+        """
+        if not values:
+            raise ValueError("values to set can't be empty")
+        cols_mappings = []
+        for colname, value in values.items():
+            sql_value, params = QueryOp._parse_to_sql(value, right=True)
+            sql_mapping = sql.Identifier(colname) + sql.SQL("=") + sql_value
+            self.__query_params.update(params)
+            cols_mappings.append(sql_mapping)
+        statement = sql.SQL(" SET ") + sql.SQL(", ").join(cols_mappings)
+        self.__set_statement = statement
+        return self
+    
+    def resolve_update(self):
+        """
+        Resolves the built clauses into an UPDATE
+        sql statement.
+        """
+        if not self.__set_statement:
+            raise ValueError(
+                "The set statement can't be null when performing an update"
+            )
+        where = sql.SQL("")
+        if self.__where_clause:
+            where = self.__where_clause
+        self.__query = (
+            sql.SQL("UPDATE ")
+            + self.__table_name
+            + self.__set_statement
+            + where
+        )

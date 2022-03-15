@@ -15,8 +15,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
-import logging
-import os
 import typing
 
 import pandas as pd
@@ -29,9 +27,9 @@ from hero_db_utils.queries.postgres import DBQuery
 from hero_db_utils.exceptions import (
     HeroDatabaseConnectionError,
     HeroDatabaseOperationError,
+    UnexpectedOperationResultError,
 )
 from hero_db_utils.engines.postgres import PsycopgDBEngine, dbengine_from_psycopg
-from hero_db_utils.constants import EnvVariablesConf
 from hero_db_utils.queries.postgres.op_builder import QueryFunc
 from hero_db_utils.utils.queries import PostgresQueries as pgqueries
 from hero_db_utils.utils.utils import get_env_params
@@ -161,7 +159,7 @@ class PostgresDatabaseClient(SQLBaseClient, PsycopgDBEngine):
         """
         if not db_name:
             db_name = self.db_name
-        logging.debug(f"Attempting to create database '{db_name}'")
+        self.get_logger().debug(f"Attempting to create database '{db_name}'")
         scr = sql.SQL("CREATE DATABASE {dbname}").format(dbname=sql.Identifier(db_name))
         with self.connection as conn:
             isolation_level = conn.isolation_level
@@ -177,7 +175,7 @@ class PostgresDatabaseClient(SQLBaseClient, PsycopgDBEngine):
                         f"Error creating database '{db_name}'. Database already exists.",
                         e,
                     ) from e
-                logging.debug(
+                self.get_logger().debug(
                     f"DuplicateDatabase error ignored with raise_duplicated=False.",
                     exc_info=True,
                 )
@@ -286,7 +284,7 @@ class PostgresDatabaseClient(SQLBaseClient, PsycopgDBEngine):
         `HeroDatabaseOperationError`
             If there was an error completing the operation.
         """
-        logging.debug(f"Deleting database '{db_name}'")
+        self.get_logger().debug(f"Deleting database '{db_name}'")
         if self.db_name == db_name:
             raise ValueError("Cannot drop the currently open database.")
         scr = sql.SQL("DROP DATABASE IF EXISTS {dbname}").format(
@@ -345,6 +343,7 @@ class PostgresDatabaseClient(SQLBaseClient, PsycopgDBEngine):
             When there was a problem inserting the data to the table, like
             when the table already exists and `drop` and `append` are False.
         """
+        from sqlalchemy import exc
         if drop and append:
             raise ValueError("Either drop or append can be True, not both.")
         exists_behavior = "append" if append else "replace" if drop else "fail"
@@ -363,7 +362,72 @@ class PostgresDatabaseClient(SQLBaseClient, PsycopgDBEngine):
                     f"Table '{table_name}' already exists in database '{self.db_name}'.",
                     e,
                 ) from e
+            except exc.SQLAlchemyError as e:
+                raise HeroDatabaseOperationError(
+                    f"Error inserting rows({len(df.index)}) into table '{table_name}'",
+                    e
+                ) from e
         client.close()
+    
+    def update(
+        self,
+        table_name:str,
+        set_values:dict,
+        filters=None,
+        commit:bool=False,
+        expected_rows:int=None
+    ) -> int:
+        """
+        Modifies the existing records in a table.
+        On success, retrieves the number of rows affected.
+        If commit is False, it wont commit the changes to the database,
+        it will only retrieve the affected rows.
+        
+        If expected_rows is not None, it should evaluate to the number
+        of rows expected to be updated, if commit is true and the
+        actual number of rows that will be updated is greater,
+        the update won't be commited to the database
+        and an exception will be raised instead.
+        """
+        if (
+            expected_rows is not None and
+            not isinstance(expected_rows,int)
+        ):
+            raise TypeError("Parameter 'expected_rows' should be a positive integer")
+        if expected_rows<0:
+            raise ValueError("Parameter 'expected_rows' should be a positive integer")
+        update_q = DBQuery()
+        update_q.table(table_name)
+        update_q.set(set_values)
+        if filters is not None:
+            update_q.where(filters)
+        update_q.resolve_update()
+        conn = self.connection
+        conn.autocommit = False
+        sql_statement = update_q.to_representation(conn)
+        self.get_logger().debug("Update sql statement: %s", sql_statement)
+        updated_rows = 0
+        with conn.cursor() as cursor:
+            try:
+                cursor.execute(sql_statement)
+            except psycopg2.errors.Error as e:
+                raise HeroDatabaseOperationError(
+                    f"Error updating table '{table_name}'", e
+                ) from e
+            else:
+                updated_rows = cursor.rowcount
+                if commit:
+                    if expected_rows is not None and updated_rows != expected_rows:
+                        raise UnexpectedOperationResultError(
+                            f"Got {updated_rows} rows for update operation, "
+                            f"expected {expected_rows}."
+                        )
+                    else:
+                        self.get_logger().debug("Commiting update to db")
+                        conn.commit()
+            finally:
+                conn.close()
+        return updated_rows
 
     def insert_from_df_v2(
         self,

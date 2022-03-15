@@ -55,3 +55,10 @@ class HeroDatabaseOperationError(HeroDatabaseError):
 	"""
 
     pass
+
+class UnexpectedOperationResultError(HeroDatabaseError):
+    """
+    Raised when an unexpected result is returned from
+    a database operation.
+    """
+    pass

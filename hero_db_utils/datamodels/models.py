@@ -4,7 +4,7 @@ import typing as tp
 import pandas as pd
 from hero_db_utils.clients._base import SQLBaseClient
 import hero_db_utils.datamodels.exceptions as errors
-from hero_db_utils.datamodels.fields import _read_only_fields, _relational_fields
+from hero_db_utils.datamodels.fields import _read_only_fields, _relational_fields, _identifier_fields
 from hero_db_utils.datamodels.sources import get_db_client
 from hero_db_utils.queries.postgres.op_builder import QueryFunc
 
@@ -52,16 +52,30 @@ class DataModel(abc.ABC):
     support for pandas objects, custom data types and
     validation for the goal of creating better data models.
     
-    Children from this class must be declared as:
+    Members from this class can be declared with:
     
     ```
-    from dataclasses import dataclass
+    from datamodels import datamodel
     
-    @dataclass
-    class DataModelChild(DataModel):
+    @datamodel
+    class DataModelChild:
         fieldname:fieldtype = default_value
     ```
     """
+    
+    @classproperty
+    def identifier_fields(cls):
+        """
+        Retrieves the serial and/or unique
+        fields defined by this data model.
+        """
+        return {
+            key:field for key, field in cls.fields.items()
+            if (
+                isinstance(field["type"], _identifier_fields) or
+                key in cls.Meta.identifier_fields
+            )
+        }
 
     @classproperty
     def fields(cls) -> tp.Dict[str, tp.Dict[str, tp.Any]]:
@@ -144,19 +158,29 @@ class DataModel(abc.ABC):
     def __post_init__(self):
         self.validate()
 
-    @classmethod
-    def objects(cls, source=None, source_type=None):
-        return DataObjectsManager(cls, source, source_type)
+    def copy(self):
+        return self.__class__(
+            **self.data.to_dict()
+        )
+
+    @classproperty
+    def objects(cls):
+        return DataObjectsManager(cls)
 
     @classmethod
     def collection(cls, models=[]):
         return DataModelsCollection(cls, models)
 
-    def save(self, source_kwargs={}, **kwargs):
-        return self.objects(**source_kwargs).save(self, **kwargs)
+    def insert(self, **kwargs):
+        return self.objects.insert(self, **kwargs)
+
+    def update(self, **kwargs):
+        return self.objects.update(self, **kwargs)
 
     class Meta:
         db_table:str = None
+        unique_together = tuple()
+        identifier_fields = tuple()
 
 class DataModelsCollection():
     """
@@ -213,8 +237,8 @@ class DataModelsCollection():
             columns=cols
         )
 
-    def save(self, source_kwargs={}, **kwargs):
-        return self.model_cls.objects(**source_kwargs).save(self, **kwargs)
+    def insert(self, source_kwargs={}, **kwargs):
+        return self.model_cls.objects(**source_kwargs).insert(self, **kwargs)
     
     def __getitem__(self, idx):
         return self._rows[idx]
@@ -241,6 +265,7 @@ class DataObjectsManager:
                 "for data model objects."
             )
         self._model_cls = model_cls
+        self._model_fields_names = list(model_cls.fields())
         if isinstance(source, SQLBaseClient):
             self._source = source
             self.source_type = "sql"
@@ -252,6 +277,10 @@ class DataObjectsManager:
     @property
     def model_cls(self) -> tp.Type[DataModel]:
         return self._model_cls
+    
+    @property
+    def model_fields_names(self) -> list:
+        return self._model_fields_names
 
     @property
     def connection(self):
@@ -291,7 +320,6 @@ class DataObjectsManager:
         if self.source_type == "sql":
             results = self.connection.select(
                 self.model_cls.dbtable,
-                projection=list(self.model_cls.fields),
                 filters=kwargs,
                 limit=self._limit
             )
@@ -320,6 +348,11 @@ class DataObjectsManager:
         On sql, this is equivalent to performing a left join
         on the tables from the columns that are foreign keys
         """
+        no_fields = set(fields) - set(self.model_fields_names)
+        if no_fields:
+            raise ValueError(
+                f"Fields '{no_fields}' are not defined for this data model"
+            )
         related_fields = [
             fieldname for fieldname, field in self.model_cls.fields.items()
             if isinstance(field["type"], _relational_fields)
@@ -327,7 +360,7 @@ class DataObjectsManager:
         not_related_fields = set(fields) - set(related_fields)
         if not_related_fields:
             raise ValueError(
-                f"Fields '{not_related_fields}' are not"
+                f"Fields '{not_related_fields}' are not "
                 "relational data type fields"
             )
         if self.source_type == "sql":
@@ -351,6 +384,11 @@ class DataObjectsManager:
                 join_on=join_on,
                 join_how=join_how
             )
+            # Remove duplicate columns:
+            results = results.loc[
+                :,
+                ~(results.columns.duplicated()&(results.columns.isin(fields)))
+            ]
         return results
 
     def get(self, **kwargs):
@@ -369,7 +407,7 @@ class DataObjectsManager:
                 f"Got more than one result for this query"
             )
         result = results.iloc[0]
-        return  self.model_cls(**result)
+        return  self.model_cls(**result[self.model_fields_names])
 
     def get_or_create(self, **kwargs):
         """
@@ -392,18 +430,67 @@ class DataObjectsManager:
             model = self.get(**kwargs)
         except errors.NoResultsError:
             pass
+        else:
+            return model, created
         model = self.model_cls(**kwargs)
-        self.save(model)
+        self.insert(model)
         created = True
         return model, created
-
-    def save(self, instance:tp.Union[DataModel, DataModelsCollection], batch_size=1000, **kwargs):
+    
+    def update(self, instance:DataModel, **kwargs):
         """
-        Saves a new record of this data model in the data source.
+        Updates the given model instance. If the DataModel
+        defines some identifier fields, it will use them to
+        filter the correct record to update on the database,
+        otherwise it will use all the fields from the data model.
+
+        Raises an error if it finds more than one record
+        when filtering the records to update.
+        """
+        if not isinstance(instance, self.model_cls):
+            raise TypeError(
+                "Data model instances accepted by this manager "
+                f"must be of type '{self.model_cls.__name__}'"
+            )
+        # Make sure params in kwargs are valid:
+        instance_cp = instance.copy()
+        for attr, value in kwargs.items():
+            setattr(instance_cp, attr, value)
+        model_id_fields = self.model_cls.identifier_fields
+        if model_id_fields:
+            filters = instance.data[model_id_fields].to_dict()
+        else:
+            filters = instance.data.to_dict()
+        if not set(kwargs.keys()).issubset(instance.fields.keys()):
+            raise ValueError(
+                "Named arguments for update should only "
+                "contain fields in the data model."
+            )
+        assert filters, "filters should not be empty for update"
+        if self.source_type == "sql":
+            self.connection.update(
+                table_name=self.model_cls.dbtable,
+                set_values=kwargs,
+                filters=filters,
+                commit=True,
+                expected_rows=1
+            )
+        else:
+            raise ValueError("source_type not supported")
+        # Set attributes of instance once update was performed:
+        for attr, value in kwargs.items():
+            setattr(instance, attr, value)
+
+    def insert(self, instance:tp.Union[DataModel, DataModelsCollection], batch_size=1000, **kwargs):
+        """
+        Inserts a new record(s) of the data model in the data source.
         """
         if isinstance(instance, DataModel):
             if not isinstance(instance, self.model_cls):
-                raise TypeError("This manager does not support this model class")
+                raise TypeError(
+                    "Data model instances accepted by this manager "
+                    f"must be of type '{self.model_cls.__name__}'"
+                )
             table = pd.DataFrame([instance.data])
             table_name = instance.dbtable
         elif isinstance(instance, DataModelsCollection):
@@ -419,6 +506,13 @@ class DataObjectsManager:
                 index=False,
                 **kwargs
             )
+
+    def __call__(self, **kwargs):
+        """
+        Returns a new object manager with the same
+        model class but new source parameters.
+        """
+        return DataObjectsManager(self.model_cls, **kwargs)
 
 class DataModelDescriber():
 
