@@ -4,11 +4,22 @@ from hero_db_utils.utils.functional import classproperty
 
 import typing as tp
 import abc
+import logging
 
 import pandas as pd
 
 class BaseMapper(abc.ABC):
     
+    def get_logger(self):
+        class_name = self.__class__.__name__
+        package_name = self.__class__.__module__
+        logger = logging.getLogger(f"{package_name}.{class_name}.")
+        return logger
+
+    @property
+    def logger(self):
+        return self.get_logger()
+
     @classproperty
     @abc.abstractmethod
     def model(cls) -> tp.Type[DataModel]:

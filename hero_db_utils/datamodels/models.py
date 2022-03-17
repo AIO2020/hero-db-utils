@@ -73,7 +73,7 @@ class DataModel(abc.ABC):
             key:field for key, field in cls.fields.items()
             if (
                 isinstance(field["type"], _identifier_fields) or
-                key in cls.Meta.identifier_fields
+                key in cls._get_meta_attr("identifier_fields", [])
             )
         }
 
@@ -133,7 +133,7 @@ class DataModel(abc.ABC):
         Name of the database table that this model
         can be associated with.
         """
-        return cls.Meta.db_table or cls.__name__.lower()
+        return cls._get_meta_attr("db_table") or cls.__name__.lower()
 
     def validate_field(self, fieldname, value):
         """
@@ -169,20 +169,26 @@ class DataModel(abc.ABC):
 
     @classmethod
     def collection(cls, models=[]):
-        return DataModelsCollection(cls, models)
+        return DataModelCollection(cls, models)
 
     def insert(self, **kwargs):
         return self.objects.insert(self, **kwargs)
 
     def update(self, **kwargs):
         return self.objects.update(self, **kwargs)
+    
+    @classmethod
+    def _get_meta_attr(cls, attr, default=None):
+        if hasattr(cls.Meta, attr):
+            return getattr(cls.Meta, attr)
+        return default
 
     class Meta:
         db_table:str = None
         unique_together = tuple()
         identifier_fields = tuple()
 
-class DataModelsCollection():
+class DataModelCollection():
     """
     Represents a collection of data models
     that can be represented as a pandas dataframe.
@@ -191,7 +197,7 @@ class DataModelsCollection():
     def __init__(self, model_cls:tp.Type[DataModel], data:tp.List[dict]=[]):
         self._rows = []
         if isinstance(data, pd.DataFrame):
-            self._rows = [
+            data = [
                 model_cls(**kwargs)
                 for kwargs in data.to_dict(orient='records')
             ]
@@ -205,7 +211,7 @@ class DataModelsCollection():
             )
             self._rows = data.copy()
         self._model_cls = model_cls
-    
+
     def __repr__(self):
         return str(self)
 
@@ -265,7 +271,7 @@ class DataObjectsManager:
                 "for data model objects."
             )
         self._model_cls = model_cls
-        self._model_fields_names = list(model_cls.fields())
+        self._model_fields_names = list(model_cls.fields)
         if isinstance(source, SQLBaseClient):
             self._source = source
             self.source_type = "sql"
@@ -481,7 +487,7 @@ class DataObjectsManager:
         for attr, value in kwargs.items():
             setattr(instance, attr, value)
 
-    def insert(self, instance:tp.Union[DataModel, DataModelsCollection], batch_size=1000, **kwargs):
+    def insert(self, instance:tp.Union[DataModel, DataModelCollection], batch_size=1000, **kwargs):
         """
         Inserts a new record(s) of the data model in the data source.
         """
@@ -493,11 +499,13 @@ class DataObjectsManager:
                 )
             table = pd.DataFrame([instance.data])
             table_name = instance.dbtable
-        elif isinstance(instance, DataModelsCollection):
+        elif isinstance(instance, DataModelCollection):
             if not instance.model_cls == self.model_cls:
                 raise TypeError("This manager does not support this model class")
             table = instance.asdf()
             table_name = instance.model_cls.dbtable
+        else:
+            raise TypeError("Insert instance must be a DataModel or DataModelsCollection")
         if self.source_type == "sql":
             kwargs["chunksize"] = batch_size
             self.connection.insert_from_df(
