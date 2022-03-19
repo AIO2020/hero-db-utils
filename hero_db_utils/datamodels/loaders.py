@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 
 from hero_db_utils.datamodels import DataModel
-from hero_db_utils.datamodels.models import DataModelsCollection
+from hero_db_utils.datamodels.models import DataModelCollection
 from hero_db_utils.utils.functional import classproperty
 
 import utils
@@ -173,7 +173,7 @@ class DataModelLoader(metaclass=ABCMeta):
         return None
 
     def make_bulk_create(self, objects, **save_kwargs):
-        collection = DataModelsCollection(
+        collection = DataModelCollection(
             self.dataclass,
         )
         collection._rows = objects

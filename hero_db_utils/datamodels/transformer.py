@@ -92,7 +92,7 @@ class BaseMapper(abc.ABC):
         """
         return None
 
-    def map(self, mapper=None, source=None, **map_kwargs):
+    def map(self, source=None, mapper=None, **map_kwargs):
         """
         Maps the data from a source data to the target data
         model and retrieves the mapper.

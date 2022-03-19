@@ -31,8 +31,9 @@ from hero_db_utils.exceptions import (
 )
 from hero_db_utils.engines.postgres import PsycopgDBEngine, dbengine_from_psycopg
 from hero_db_utils.queries.postgres.op_builder import QueryFunc
-from hero_db_utils.utils.queries import PostgresQueries as pgqueries
-from hero_db_utils.utils.utils import get_env_params
+from hero_db_utils.utils.postgres.adapters import register_np_dtypes
+import hero_db_utils.utils.postgres.queries as pgqueries
+from hero_db_utils.utils import get_env_params
 from hero_db_utils.clients._base import SQLBaseClient
 
 class PostgresDatabaseClient(SQLBaseClient, PsycopgDBEngine):
@@ -346,6 +347,7 @@ class PostgresDatabaseClient(SQLBaseClient, PsycopgDBEngine):
         from sqlalchemy import exc
         if drop and append:
             raise ValueError("Either drop or append can be True, not both.")
+        self._register_np_dtypes()
         exists_behavior = "append" if append else "replace" if drop else "fail"
         params = {}
         params["index"] = False
@@ -368,7 +370,13 @@ class PostgresDatabaseClient(SQLBaseClient, PsycopgDBEngine):
                     e
                 ) from e
         client.close()
-    
+
+    def _register_np_dtypes(self):
+        """
+        Register numpy data types to postgres:
+        """
+        register_np_dtypes()
+
     def update(
         self,
         table_name:str,

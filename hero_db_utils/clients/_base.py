@@ -10,7 +10,7 @@ class SQLBaseClient(abc.ABC):
         )
 
     @abc.abstractmethod
-    def select(*args, **kwargs)  -> pd.DataFrame:
+    def select(self, *args, **kwargs)  -> pd.DataFrame:
         """
         Returns a dataframe with the selection after building the query using
         the given parameters.
@@ -30,7 +30,14 @@ class SQLBaseClient(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def read_sql_query(*args, **kwargs) -> pd.DataFrame:
+    def _register_np_dtypes(self):
+        """
+        Register numpy data types to the database engine:
+        """
+        pass
+
+    @abc.abstractmethod
+    def read_sql_query(self, *args, **kwargs) -> pd.DataFrame:
         """
         Passes the `sql_query` argument as sql and the rest of named arguments
         to the `read_sql_query` method from pandas using the object's open

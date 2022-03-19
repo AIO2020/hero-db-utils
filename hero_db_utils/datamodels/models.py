@@ -275,6 +275,7 @@ class DataObjectsManager:
         if isinstance(source, SQLBaseClient):
             self._source = source
             self.source_type = "sql"
+            self._source._register_np_dtypes()
         else:
             self.source_type = source_type
             self._source = source
@@ -514,6 +515,22 @@ class DataObjectsManager:
                 index=False,
                 **kwargs
             )
+    
+    def first(self, **params) -> tp.Union[None, tp.Type[DataModel]]:
+        """
+        Retrieves the first object that matches
+        the params given or none, if no results are found
+        """
+        found = self.model_cls.objects.filter(**params)
+        if found.empty:
+            return None
+        first = found.iloc[0]
+        return self.model_cls.objects.get(
+            **{
+                field:first[field]
+                for field in self.model_cls.identifier_fields
+            }
+        )
 
     def __call__(self, **kwargs):
         """
