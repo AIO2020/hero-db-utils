@@ -152,7 +152,7 @@ class DataModelLoader(metaclass=ABCMeta):
         created_items = []
         retrieve_out_data = self._log_loaded or bulk_create or get_output
         for row in input_data.itertuples():
-            item_resp = self._load_item(row.Index, row)
+            item_resp = self._load_item(row.Index, row[1:])
             if item_resp is None:
                 continue
             model_instance, _ = item_resp
@@ -161,24 +161,23 @@ class DataModelLoader(metaclass=ABCMeta):
             if not bulk_create:
                 model_instance.save(**save_kwargs)
             if retrieve_out_data:
-                created_items.append(model_instance.data)
+                created_items.append(model_instance)
         if retrieve_out_data:
-            out_data = pd.DataFrame(created_items)
+            collection = DataModelCollection(
+                self.dataclass,
+            )
+            collection._rows = created_items
+            out_data = collection.asdf()
         if bulk_create:
-            self.make_bulk_create(out_data, **save_kwargs)
+            self.make_bulk_create(collection, **save_kwargs)
         if self._log_loaded:
             self._loaded_data = pd.concat([self._loaded_data, out_data], ignore_index=True)
         if get_output:
             return out_data
         return None
 
-    def make_bulk_create(self, objects, **save_kwargs):
-        collection = DataModelCollection(
-            self.dataclass,
-        )
-        collection._rows = objects
+    def make_bulk_create(self, collection, **save_kwargs):
         collection.save(
-            objects,
             **save_kwargs
         )
 

@@ -177,6 +177,26 @@ class DataModel(abc.ABC):
     def update(self, **kwargs):
         return self.objects.update(self, **kwargs)
     
+    def save(self):
+        """
+        Inserts or updates the model depending
+        if the primary keys exist on the database or not.
+        """
+        self.objects.save(self)
+
+    @classproperty
+    def required_fields(cls):
+        """
+        Retrieves the fields that are required
+        for the model class.
+        """
+        uq_fields = [
+            field for field, attrs in cls.fields.items()
+            if not "default" in attrs or
+            field in cls._get_meta_attr("unique_together", [])
+        ]
+        return uq_fields
+
     @classmethod
     def _get_meta_attr(cls, attr, default=None):
         if hasattr(cls.Meta, attr):
@@ -197,6 +217,8 @@ class DataModelCollection():
     def __init__(self, model_cls:tp.Type[DataModel], data:tp.List[dict]=[]):
         self._rows = []
         if isinstance(data, pd.DataFrame):
+            self._df = data.copy()
+            self._frame_size = len(data.index)
             data = [
                 model_cls(**kwargs)
                 for kwargs in data.to_dict(orient='records')
@@ -211,6 +233,7 @@ class DataModelCollection():
             )
             self._rows = data.copy()
         self._model_cls = model_cls
+        self._last_size = len(self._rows)
 
     def __repr__(self):
         return str(self)
@@ -231,21 +254,35 @@ class DataModelCollection():
     @property
     def model_cls(self):
         return self._model_cls
+    
+    @property
+    def frame(self) -> pd.DataFrame:
+        """
+        Dataframe representation of the model collection.
+        """
+        if not hasattr(self, "_df") or self.size != self._frame_size:
+            self._df = self.asdf()
+        return self._df
 
-    def asdf(self, all_cols=False) -> pd.DataFrame:
+    def asdf(self) -> pd.DataFrame:
         """
         Transforms a list of member of the fields class or list of dicts (kwargs) into
         a pandas dataframe compatible for this fields class.
         """
-        cols = list(self.model_cls.fields) if not all_cols else list(self.model_cls.fields)
-        return pd.DataFrame(
+        cols = list(self.model_cls.fields)
+        self._df = pd.DataFrame(
             map(lambda o: getattr(o, 'data')[cols], self.raw),
             columns=cols
         )
+        self._frame_size = self.size
+        return self._df
 
     def insert(self, source_kwargs={}, **kwargs):
         return self.model_cls.objects(**source_kwargs).insert(self, **kwargs)
     
+    def save(self, source_kwargs={}):
+        return self.model_cls.objects(**source_kwargs).save(self)
+
     def __getitem__(self, idx):
         return self._rows[idx]
     
@@ -414,7 +451,60 @@ class DataObjectsManager:
                 f"Got more than one result for this query"
             )
         result = results.iloc[0]
-        return  self.model_cls(**result[self.model_fields_names])
+        return self.model_cls(**result[self.model_fields_names])
+    
+    def _safe_update_from_known(self, instance:tp.Type[DataModel], ext_data={}):
+        """
+        Safely updates a data model from some external data
+        by removing the identifier fields from the data to update
+        if they are null
+        """
+        update_values = {}
+        id_fields = instance.identifier_fields
+        if not id_fields:
+            raise AttributeError("identifier fields can't be empty when performing an update")
+        if not ext_data:
+            ext_data = instance.data
+        for attr in ext_data:
+            if not attr in id_fields or not pd.isnull(ext_data[attr]):
+                update_values[attr] = ext_data[attr]
+        instance.update(**update_values)
+
+    def save(self, instance:tp.Union[DataModel, DataModelCollection]):
+        """
+        Inserts or updates the DataModel instance(s) given.
+        """
+        req_fields = self.model_cls.required_fields
+        if not req_fields:
+            raise AttributeError(
+                "Can't use save on a model that does not define required fields."
+            )
+        if isinstance(instance, DataModel):
+            req_fields_data = instance.data[req_fields]
+            db_ins = self.first(instance, **req_fields_data)
+            if db_ins:
+                self._safe_update(db_ins)
+            else:
+                instance.insert()
+        elif isinstance(instance, DataModelCollection):
+            df = instance.frame
+            id_fields = df[req_fields].copy()
+            id_fields["objects"] = id_fields.apply(
+                lambda s: self.first(**s),
+                axis=1
+            )
+            to_update = df.loc[id_fields[id_fields["objects"].notnull()].index]
+            # Perform updates:
+            for row in to_update.itertuples():
+                obj = id_fields["objects"][row.Index]
+                values = row[1:]
+                fields = row._fields[1:]
+                self._safe_update_from_known(obj, {key:name for key,name in zip(fields, values)})
+            to_insert = df.loc[id_fields[id_fields["objects"].isnull()].index]
+            new_collection = self.model_cls.collection(to_insert)
+            new_collection.insert()
+        else:
+            raise TypeError(f"instance is not a supported type. Got '{type(instance)}'")
 
     def get_or_create(self, **kwargs):
         """

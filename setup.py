@@ -11,7 +11,7 @@ with open("opt_requirements.txt") as requirements_file:
 
 setuptools.setup(
     name="hero_db_utils",
-    version="1.4.3",
+    version="1.4.3.2",
     url="https://github.com/AIO2020/hero-db-utils",
     description="Database utilities for projects related to the AIO-hero platform.",
     long_description=readme,
