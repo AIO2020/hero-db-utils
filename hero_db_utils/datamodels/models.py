@@ -466,7 +466,7 @@ class DataObjectsManager:
         if not ext_data:
             ext_data = instance.data
         for attr in ext_data:
-            if not attr in id_fields or not pd.isnull(ext_data[attr]):
+            if not attr in id_fields:
                 update_values[attr] = ext_data[attr]
         instance.update(**update_values)
 

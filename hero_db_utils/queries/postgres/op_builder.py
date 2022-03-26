@@ -209,7 +209,7 @@ class QueryOp:
     def _parse_to_sql(value, right=False):
         if isinstance(value, bool):
             return sql.SQL("true" if value else "false"), {}
-        elif value is None:
+        elif pd.isnull(value):
             return sql.SQL("NULL"), {}
         elif isinstance(value, QueryFunc):
             return value.value, {}
