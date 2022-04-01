@@ -490,18 +490,19 @@ class DataObjectsManager:
             df = instance.frame
             id_fields = df[req_fields].copy()
             id_fields = id_fields.drop_duplicates(keep='last')
+            df = df.loc[id_fields.index].copy()
             id_fields["objects"] = id_fields.apply(
                 lambda s: self.first(**s),
                 axis=1
             )
             to_update = df.loc[id_fields[id_fields["objects"].notnull()].index]
+            to_insert = df[~(df.index.isin(to_update.index))]
             # Perform updates:
             for row in to_update.itertuples():
                 obj = id_fields["objects"][row.Index]
                 values = row[1:]
                 fields = row._fields[1:]
                 self._safe_update_from_known(obj, {key:name for key,name in zip(fields, values)})
-            to_insert = df.loc[id_fields["objects"].isnull().index]
             new_collection = self.model_cls.collection(to_insert)
             new_collection.insert()
         else:
