@@ -488,9 +488,8 @@ class DataObjectsManager:
                 instance.insert()
         elif isinstance(instance, DataModelCollection):
             df = instance.frame
+            df = df.drop_duplicates(subset=req_fields, keep='last').copy()
             id_fields = df[req_fields].copy()
-            id_fields = id_fields.drop_duplicates(keep='last')
-            df = df.loc[id_fields.index].copy()
             id_fields["objects"] = id_fields.apply(
                 lambda s: self.first(**s),
                 axis=1
