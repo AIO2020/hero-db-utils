@@ -464,7 +464,7 @@ class DataObjectsManager:
         if not id_fields:
             raise AttributeError("identifier fields can't be empty when performing an update")
         if not ext_data:
-            ext_data = instance.data
+            ext_data = dict(instance.data)
         for attr in ext_data:
             if not attr in id_fields:
                 update_values[attr] = ext_data[attr]
@@ -481,9 +481,9 @@ class DataObjectsManager:
             )
         if isinstance(instance, DataModel):
             req_fields_data = instance.data[req_fields]
-            db_ins = self.first(instance, **req_fields_data)
+            db_ins = self.first(**req_fields_data)
             if db_ins:
-                self._safe_update(db_ins)
+                self._safe_update_from_known(db_ins)
             else:
                 instance.insert()
         elif isinstance(instance, DataModelCollection):
